@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GASPOL — Gross-Up & Pemotongan Pajak Vendor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --blue:       #1B4FD8;
-  --blue-mid:   #2563EB;
-  --blue-light: #DBEAFE;
-  --blue-pale:  #EFF6FF;
+  --brand:       #C81E2C;
+  --brand-mid:   #E23744;
+  --brand-light: #FCE1E1;
+  --brand-pale:  #FFF4F4;
+  --brand-dark:  #7A1119;
   --gold:       #F59E0B;
   --gold-light: #FEF3C7;
   --gold-bright:#FBBF24;
@@ -75,15 +76,20 @@ body {
   text-decoration: none;
 }
 .logo-icon {
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--blue); display: flex; align-items: center; justify-content: center;
-  font-size: 17px; box-shadow: 0 2px 8px rgba(27,79,216,.35); flex-shrink: 0;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: radial-gradient(circle at 32% 28%, #2b2b2f 0%, #131316 60%, #000 100%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06);
+  flex-shrink: 0; position: relative;
 }
+.logo-icon svg { width: 26px; height: 26px; display: block; }
+.logo-block { display: flex; flex-direction: column; justify-content: center; }
 .logo-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800; font-size: 18px; color: var(--ink); letter-spacing: -0.5px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700; font-size: 20px; color: var(--brand); letter-spacing: .5px;
+  line-height: 1; text-transform: uppercase;
 }
-.logo-text span { color: var(--blue); }
+.logo-text span { color: #14141a; }
 
 .sidebar-nav {
   display: flex; flex-direction: column;
@@ -94,21 +100,32 @@ body {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 12px; border-radius: var(--radius-sm); border: none;
   background: transparent; color: var(--gray-600);
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 600;
+  font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; transition: all .18s; white-space: nowrap; text-align: left;
   width: 100%;
 }
-.nav-tab .nav-tab-icon { font-size: 16px; }
+.nav-tab .nav-tab-icon { font-size: 16px; display: flex; }
+.nav-tab .nav-tab-icon svg { width: 16px; height: 16px; }
 .nav-tab:hover:not(.active) { background: var(--gray-50); color: var(--ink); }
-.nav-tab.active { background: var(--blue-pale); color: var(--blue); }
+.nav-tab.active { background: var(--brand-pale); color: var(--brand); }
 .nav-tab.active .nav-tab-label { font-weight: 700; }
 
 .sidebar-footer {
-  padding: 14px 16px;
+  padding: 12px 16px 14px;
   border-top: 1px solid var(--gray-100);
-  font-size: 10px;
-  color: var(--gray-400);
   line-height: 1.5;
+}
+.footer-acronym {
+  font-size: 9.5px;
+  color: var(--gray-600);
+  letter-spacing: .1px;
+}
+.footer-acronym b { color: var(--brand); font-weight: 800; }
+.footer-copy {
+  font-size: 9.5px;
+  color: var(--gray-400);
+  margin-top: 6px;
+  font-weight: 600;
 }
 
 /* ── MAIN CONTENT ── */
@@ -144,16 +161,26 @@ main {
 
 .calc-topbar {
   flex-shrink: 0;
-  background: linear-gradient(135deg, var(--blue) 0%, #2563EB 100%);
+  position: relative; overflow: hidden;
+  background: #16161c;
+  --topbar-accent: var(--brand);
   padding: 10px 18px;
   display: flex; align-items: center; gap: 10px;
 }
+.calc-topbar::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(115deg, transparent 0 24px, var(--topbar-accent) 24px 32px, transparent 32px 58px);
+  -webkit-mask-image: linear-gradient(110deg, transparent 48%, #000 76%);
+          mask-image: linear-gradient(110deg, transparent 48%, #000 76%);
+}
+.calc-topbar > * { position: relative; z-index: 1; }
 .calc-topbar .ch-icon {
-  width: 32px; height: 32px; background: rgba(255,255,255,.15);
+  width: 32px; height: 32px; background: rgba(255,255,255,.12);
   border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;
 }
 .calc-topbar h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: #fff;
+  font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; color: #fff;
 }
 .calc-topbar p { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 1px; }
 
@@ -229,7 +256,7 @@ main {
   font-size: 30px;
 }
 .coming-soon-wrap h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 16px; font-weight: 700; color: var(--ink);
 }
 .coming-soon-wrap p {
@@ -241,6 +268,133 @@ main {
   background: var(--gold-light); color: #92620A;
   padding: 4px 12px; border-radius: 999px;
 }
+
+/* ── PEMOTONGAN: mode toggle (Transaksi Tunggal / Multi-Item) ── */
+.pot-mode-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.pot-mode-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-600);
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.pot-mode-btn:hover { background: var(--gray-50); }
+.pot-mode-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(5,150,105,.25);
+}
+
+.pot-items-empty {
+  padding: 20px 12px;
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--gray-600);
+  background: var(--gray-50);
+  border-radius: 10px;
+  border: 1.5px dashed var(--gray-200);
+}
+
+.pot-item-row {
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+}
+.pot-item-row-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.pot-item-no {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-light);
+  padding: 3px 7px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.pot-item-remove {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  border: none;
+  background: var(--red-light);
+  color: var(--red);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.pot-item-remove:hover { background: var(--red); color: #fff; }
+
+.pot-item-row-bottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pot-item-jumlah-wrap { flex: 1; margin-bottom: 0 !important; }
+.pot-item-jumlah { font-size: 12.5px !important; padding: 6px 8px 6px 32px !important; }
+
+/* One-click tax chip selector — replaces the old toggle + dropdown combo */
+.pot-item-tax-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.pot-tax-chip {
+  border: 1.5px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-600);
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .12s ease;
+}
+.pot-tax-chip:hover { background: var(--gray-50); }
+.pot-tax-chip.selected {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+}
+.pot-tax-chip.none-chip.selected {
+  border-color: var(--gray-600);
+  background: var(--gray-600);
+  color: #fff;
+}
+
+.pot-add-item-btn {
+  width: 100%;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1.5px dashed var(--green);
+  background: var(--green-light);
+  color: var(--green);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.pot-add-item-btn:hover { background: #D1FAE5; }
 
 /* Left panel — input/options */
 .panel-left {
@@ -286,7 +440,7 @@ main {
     position: sticky; top: 0;
     overflow-x: auto; overflow-y: hidden;
   }
-  .sidebar-logo { padding: 12px 14px; border-bottom: none; border-right: 1px solid var(--gray-100); flex-shrink: 0; }
+  .sidebar-logo { padding: 10px 14px; border-bottom: none; border-right: 1px solid var(--gray-100); flex-shrink: 0; }
   .sidebar-nav { flex-direction: row; padding: 8px; gap: 3px; }
   .nav-tab { padding: 7px 10px; font-size: 11px; }
   .sidebar-footer { display: none; }
@@ -304,19 +458,19 @@ main {
 .hero { text-align: center; padding: 20px 0 16px; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--blue-light); border: 1px solid #BFDBFE;
+  background: var(--brand-light); border: 1px solid #F8C5C5;
   border-radius: 20px; padding: 3px 12px;
-  font-size: 11px; font-weight: 700; color: var(--blue);
+  font-size: 11px; font-weight: 700; color: var(--brand);
   text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px;
 }
 .hero h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(22px, 4vw, 32px); font-weight: 800;
   line-height: 1.15; letter-spacing: -1px; margin-bottom: 8px; color: var(--ink);
 }
 .hero h1 em {
-  font-style: normal; color: var(--blue);
-  background: linear-gradient(135deg, var(--blue) 0%, #60A5FA 100%);
+  font-style: normal; color: var(--brand);
+  background: linear-gradient(135deg, var(--brand) 0%, #FF7A7A 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero p { color: var(--gray-600); font-size: 13px; max-width: 420px; margin: 0 auto; line-height: 1.6; }
@@ -327,7 +481,7 @@ main {
   border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden; margin-top: 14px;
 }
 .calc-card-header {
-  background: linear-gradient(135deg, var(--blue) 0%, #2563EB 100%);
+  background: linear-gradient(135deg, var(--brand) 0%, #E23744 100%);
   padding: 18px 24px; display: flex; align-items: center; gap: 12px;
 }
 .calc-card-header .ch-icon {
@@ -335,7 +489,7 @@ main {
   border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px;
 }
 .calc-card-header h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+  font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
 }
 .calc-card-header p { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 2px; }
 
@@ -351,10 +505,10 @@ main {
   border: 2px solid var(--gray-300); display: flex; align-items: center; justify-content: center;
   font-size: 11px; font-weight: 700; color: var(--gray-400); flex-shrink: 0; transition: all .25s;
 }
-.step-dot.active { border-color: var(--blue); background: var(--blue); color: #fff; }
+.step-dot.active { border-color: var(--brand); background: var(--brand); color: #fff; }
 .step-dot.done  { border-color: var(--green); background: var(--green); color: #fff; }
 .step-label { font-size: 11px; font-weight: 600; color: var(--gray-400); }
-.step-label.active { color: var(--blue); }
+.step-label.active { color: var(--brand); }
 .step-label.done   { color: var(--green); }
 .step-line { flex: 1; height: 2px; background: var(--gray-200); margin: 0 6px; border-radius: 2px; }
 .step-line.done { background: var(--green); }
@@ -364,7 +518,7 @@ main {
 
 /* ── SECTION LABEL ── */
 .sect-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 10px; font-weight: 700; color: var(--gray-400);
   text-transform: uppercase; letter-spacing: .8px; margin-bottom: 5px;
 }
@@ -379,28 +533,25 @@ main {
   cursor: pointer; transition: all .2s;
   display: flex; align-items: flex-start; gap: 10px;
 }
-.type-card:hover { border-color: var(--blue-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,.12); }
-.type-card.selected { border-color: var(--blue); background: var(--blue-pale); box-shadow: 0 0 0 4px rgba(27,79,216,.08); }
+.type-card:hover { border-color: var(--brand-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(226,55,68,.12); }
+.type-card.selected { border-color: var(--brand); background: var(--brand-pale); box-shadow: 0 0 0 4px rgba(200,30,44,.08); }
 
 .type-icon {
   width: 34px; height: 34px; border-radius: 8px;
   display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
 }
-.ti-jasa      { background: #EFF6FF; }
+.ti-jasa      { background: var(--brand-pale); }
 .ti-sewa-lain { background: #F5F3FF; }
 .ti-sewa-tanah{ background: #ECFDF5; }
 .ti-reward    { background: #FFFBEB; }
 
-.type-info h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.type-info h3 { font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
 .type-info p  { font-size: 11px; color: var(--gray-600); line-height: 1.45; }
 .type-tag {
   display: inline-block; margin-top: 6px;
   padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: .3px;
 }
-.tag-blue   { background: var(--blue-light); color: var(--blue); }
-.tag-purple { background: #EDE9FE; color: #7C3AED; }
-.tag-green  { background: var(--green-light); color: var(--green); }
-.tag-gold   { background: var(--gold-light); color: #D97706; }
+.tag-teal, .tag-purple, .tag-green, .tag-gold { background: var(--gray-100); color: var(--gray-600); }
 
 /* ── RECIPIENT ── */
 .recipient-section { display: none; margin-bottom: 14px; }
@@ -414,22 +565,22 @@ main {
   cursor: pointer; transition: all .2s;
   display: flex; align-items: center; gap: 10px;
 }
-.recipient-card:hover { border-color: var(--blue-mid); }
-.recipient-card.selected { border-color: var(--blue); background: var(--blue-pale); }
+.recipient-card:hover { border-color: var(--brand-mid); }
+.recipient-card.selected { border-color: var(--brand); background: var(--brand-pale); }
 .rc-icon { font-size: 24px; }
-.rc-info h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; }
+.rc-info h4 { font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700; }
 .rc-info p  { font-size: 11px; color: var(--gray-600); margin-top: 2px; }
 
 /* ── INFO BOX ── */
 .tax-info-box {
   display: none; margin-bottom: 18px;
-  background: var(--blue-pale); border: 1px solid #BFDBFE;
+  background: var(--brand-pale); border: 1px solid #F8C5C5;
   border-radius: var(--radius-sm); padding: 12px 14px;
   font-size: 12px; color: var(--gray-700); line-height: 1.55;
   gap: 10px; align-items: flex-start;
 }
 .tax-info-box.show { display: flex; animation: fadeUp .2s ease; }
-.tax-info-box strong { color: var(--blue); }
+.tax-info-box strong { color: var(--brand); }
 
 /* ── INPUT ── */
 .input-section { display: none; }
@@ -448,38 +599,35 @@ main {
   font-size: 18px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
   transition: border-color .18s, box-shadow .18s;
 }
-.calc-input:focus { outline: none; border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 4px rgba(27,79,216,.1); }
+.calc-input:focus { outline: none; border-color: var(--brand); background: var(--white); box-shadow: 0 0 0 4px rgba(200,30,44,.1); }
 .calc-input::placeholder { color: var(--gray-300); }
 
 .calc-btn {
-  width: 100%; padding: 11px;
-  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
-  border: none; border-radius: var(--radius-sm); color: #fff;
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700;
-  cursor: pointer; transition: all .2s;
+  width: 100%; padding: 12px;
+  background: var(--brand);
+  border: none; border-bottom: 3px solid var(--brand-dark); border-radius: 8px;
+  color: #fff;
+  font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+  cursor: pointer; transition: background .15s, transform .1s;
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  box-shadow: 0 4px 12px rgba(27,79,216,.3);
 }
-.calc-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,79,216,.4); }
+.calc-btn:hover { background: var(--brand-mid); }
+.calc-btn:active { transform: translateY(2px); border-bottom-width: 1px; }
 
 /* ── RESULT ── */
 .result-section { display: none; margin-top: 22px; }
 .result-section.show { display: block; animation: fadeUp .35s ease; }
 
 .result-highlight-banner {
-  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-  border: 2px solid var(--gold-bright);
-  border-radius: var(--radius); padding: 14px 18px;
+  background: #FFFBF0;
+  border: 1px solid var(--gray-200);
+  border-left: 5px solid var(--gold-bright);
+  border-radius: var(--radius-sm); padding: 14px 18px;
   margin-bottom: 12px;
-  position: relative; overflow: hidden;
-  box-shadow: 0 4px 20px rgba(251,191,36,.25);
-}
-.result-highlight-banner::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+  position: relative;
 }
 .rhb-eyebrow {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700;
+  font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
   color: #D97706; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px;
   display: flex; align-items: center; gap: 6px;
 }
@@ -489,7 +637,7 @@ main {
   color: var(--ink); letter-spacing: -1px; line-height: 1;
 }
 .rhb-sub { font-size: 11px; color: var(--gray-600); margin-top: 6px; }
-.rhb-sub strong { color: var(--blue); }
+.rhb-sub strong { color: var(--brand); }
 
 .result-card {
   background: var(--white); border: 1px solid var(--gray-200);
@@ -504,7 +652,7 @@ main {
 }
 .rr.green-row { background: var(--green-light); border-color: #A7F3D0; }
 .rr.red-row   { background: var(--red-light);   border-color: #FECACA; }
-.rr.blue-row  { background: var(--blue-light);  border-color: #BFDBFE; }
+.rr.teal-row  { background: var(--teal-light);  border-color: #99F6E4; }
 .rr.gold-row  { background: var(--gold-light);  border-color: #FDE68A; }
 .rr-label { font-size: 12px; color: var(--gray-600); display: flex; align-items: center; gap: 5px; }
 .rr-val {
@@ -512,12 +660,12 @@ main {
 }
 .rr-val.green { color: var(--green); }
 .rr-val.red   { color: var(--red); }
-.rr-val.blue  { color: var(--blue); }
+.rr-val.teal  { color: var(--teal); }
 .rr-val.gold  { color: #D97706; }
 
 .result-formula {
   background: var(--gray-50); border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm); border-left: 3px solid var(--blue);
+  border-radius: var(--radius-sm); border-left: 3px solid var(--brand);
   padding: 10px 12px; font-size: 11px; color: var(--gray-600); line-height: 1.65;
 }
 .result-formula strong { color: var(--ink); }
@@ -527,15 +675,15 @@ main {
   background: var(--white); border: 1px solid var(--gray-200);
   border-radius: var(--radius-sm); color: var(--gray-600); font-size: 13px; font-weight: 600;
   cursor: pointer; transition: all .18s; display: flex; align-items: center; justify-content: center; gap: 6px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
-.reset-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
+.reset-btn:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-pale); }
 
 /* ── GLOSSARY PAGE ── */
 .gloss-hero { padding: 30px 0 22px; text-align: center; }
 .gloss-hero h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 800;
-  color: var(--ink); margin-bottom: 6px; letter-spacing: -.5px;
+  font-family: 'Oswald', sans-serif; font-size: 27px; font-weight: 700;
+  color: var(--ink); margin-bottom: 6px; letter-spacing: .2px; text-transform: uppercase;
 }
 .gloss-hero p { color: var(--gray-600); font-size: 14px; }
 
@@ -546,7 +694,7 @@ main {
   background: var(--white); border: 2px solid var(--gray-200);
   border-radius: var(--radius); color: var(--ink); font-size: 14px; font-family: 'Inter', sans-serif;
 }
-.search-bar:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,216,.1); }
+.search-bar:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(200,30,44,.1); }
 .search-bar::placeholder { color: var(--gray-400); }
 
 .gloss-cats { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 20px; }
@@ -554,10 +702,10 @@ main {
   padding: 6px 13px; border-radius: 20px; border: 1.5px solid var(--gray-200);
   background: var(--white); color: var(--gray-600);
   font-size: 12px; font-weight: 600; cursor: pointer; transition: all .18s;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
-.gloss-cat.active { background: var(--blue); color: #fff; border-color: var(--blue); }
-.gloss-cat:hover:not(.active) { border-color: var(--blue); color: var(--blue); }
+.gloss-cat.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+.gloss-cat:hover:not(.active) { border-color: var(--brand); color: var(--brand); }
 
 .gloss-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
 
@@ -565,7 +713,7 @@ main {
   background: var(--white); border: 1.5px solid var(--gray-200);
   border-radius: var(--radius); overflow: hidden; transition: border-color .18s, box-shadow .18s;
 }
-.gloss-item:hover { border-color: var(--blue-mid); box-shadow: 0 2px 8px rgba(37,99,235,.1); }
+.gloss-item:hover { border-color: var(--brand-mid); box-shadow: 0 2px 8px rgba(226,55,68,.1); }
 .gloss-q {
   padding: 14px 15px; cursor: pointer;
   display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
@@ -574,7 +722,7 @@ main {
 .gloss-q-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
 .gloss-q-label { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.4; }
 .gloss-arrow { font-size: 11px; color: var(--gray-400); transition: transform .2s; flex-shrink: 0; margin-top: 3px; }
-.gloss-item.open .gloss-arrow { transform: rotate(180deg); color: var(--blue); }
+.gloss-item.open .gloss-arrow { transform: rotate(180deg); color: var(--brand); }
 .gloss-item.open .gloss-q { border-bottom: 1px solid var(--gray-100); }
 
 .gloss-a {
@@ -582,14 +730,14 @@ main {
   font-size: 12px; color: var(--gray-600); line-height: 1.75;
 }
 .gloss-a.show { display: block; animation: fadeUp .2s ease; }
-.gloss-a strong { color: var(--blue); }
+.gloss-a strong { color: var(--brand); }
 .gloss-a ul { padding-left: 16px; margin-top: 5px; }
 .gloss-a li { margin-bottom: 3px; }
 
 /* ── RATES TABLE ── */
 .rates-section { margin-top: 32px; }
 .rates-section h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700;
+  font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700;
   color: var(--ink); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
 }
 .rates-table-wrap {
@@ -600,8 +748,8 @@ table { width: 100%; border-collapse: collapse; background: var(--white); }
 thead { background: var(--gray-50); }
 th {
   padding: 11px 16px; text-align: left; border-bottom: 2px solid var(--gray-200);
-  font-size: 11px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .5px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px; font-weight: 700; color: var(--brand); text-transform: uppercase; letter-spacing: .5px;
+  font-family: 'Oswald', sans-serif;
 }
 td {
   padding: 10px 16px; font-size: 12px; color: var(--gray-600);
@@ -614,7 +762,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   display: inline-block; padding: 2px 8px; border-radius: 4px;
   font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
 }
-.rpill-blue   { background: var(--blue-light); color: var(--blue); }
+.rpill-teal   { background: var(--teal-light); color: var(--teal); }
 .rpill-gold   { background: var(--gold-light);  color: #D97706; }
 .rpill-green  { background: var(--green-light); color: var(--green); }
 .rpill-gray   { background: var(--gray-100); color: var(--gray-600); }
@@ -644,7 +792,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
 .pkp-card:hover { border-color: var(--green); transform: translateY(-1px); }
 .pkp-card.selected { border-color: var(--green); background: #F0FDF4; box-shadow: 0 0 0 3px rgba(5,150,105,.08); }
 .pkp-icon { font-size: 18px; margin-bottom: 2px; }
-.pkp-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; color: var(--ink); }
+.pkp-title { font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 700; color: var(--ink); }
 .pkp-desc  { font-size: 10px; color: var(--gray-600); margin-top: 2px; line-height: 1.3; }
 .pkp-badge {
   display: inline-block; margin-top: 3px; padding: 1px 6px; border-radius: 4px;
@@ -655,8 +803,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   border-radius: var(--radius-sm); padding: 6px 10px;
   font-size: 11px; line-height: 1.45; gap: 7px; align-items: flex-start;
 }
-.pkp-badge.pkp { background: var(--green-light); color: var(--green); }
-.pkp-badge.nonpkp { background: var(--gray-100); color: var(--gray-600); }
+.pkp-badge.pkp, .pkp-badge.nonpkp { background: var(--gray-100); color: var(--gray-600); }
 .pkp-info-box.show { display: flex; animation: fadeUp .25s ease; }
 .pkp-info-box.pkp  { background: #F0FDF4; border: 1px solid #A7F3D0; color: #065F46; }
 .pkp-info-box.nonpkp { background: var(--gray-50); border: 1px solid var(--gray-200); color: var(--gray-700); }
@@ -671,7 +818,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   cursor: pointer; transition: all .2s;
   display: flex; align-items: center; gap: 6px;
 }
-.pot-type-card .type-info h3 { font-size: 11px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
+.pot-type-card .type-info h3 { font-size: 11px; font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--ink); margin-bottom: 1px; }
 .pot-type-card .type-info p  { font-size: 10px; color: var(--gray-600); }
 .pot-type-card:hover { border-color: var(--green); transform: translateY(-1px); }
 .pot-type-card.selected { border-color: var(--green); background: #F0FDF4; box-shadow: 0 0 0 4px rgba(5,150,105,.08); }
@@ -686,7 +833,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   padding: 18px 24px; display: flex; align-items: center; gap: 12px;
 }
 .potongan-card-header h2 {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+  font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
 }
 .potongan-card-header p { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 2px; }
 .potongan-body { padding: 18px 20px; }
@@ -703,7 +850,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   display: flex; align-items: center; gap: 12px;
 }
 .rhg-eyebrow {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 700;
+  font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700;
   color: var(--gray-400); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 2px;
 }
 .rhg-value {
@@ -714,14 +861,15 @@ td:first-child { color: var(--ink); font-weight: 600; }
 
 /* ── BIG HIGHLIGHT ROWS (Pemotongan + Nilai Akhir) ── */
 .rr.highlight-cut {
-  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
-  border: 2px solid #FCA5A5;
+  background: #FFF8F8;
+  border: 1px solid var(--gray-200);
+  border-left: 5px solid var(--red);
   padding: 16px 18px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   align-items: center;
 }
 .rr.highlight-cut .rr-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 14px; font-weight: 700; color: var(--red);
   display: flex; align-items: center; gap: 6px;
 }
@@ -731,19 +879,16 @@ td:first-child { color: var(--ink); font-weight: 600; }
 }
 
 .rr.highlight-total {
-  background: linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%);
-  border: 2px solid #6EE7B7;
+  background: #F7FDF9;
+  border: 1px solid var(--gray-200);
+  border-left: 5px solid var(--green);
   padding: 16px 18px;
-  border-radius: var(--radius);
-  position: relative; overflow: hidden;
+  border-radius: var(--radius-sm);
+  position: relative;
   align-items: center;
 }
-.rr.highlight-total::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--green) 0%, #34D399 50%, var(--green) 100%);
-}
 .rr.highlight-total .rr-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 14px; font-weight: 700; color: var(--green);
   display: flex; align-items: center; gap: 6px;
 }
@@ -758,7 +903,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
   border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px;
 }
 .ppn-section-title {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700;
+  font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 700;
   color: var(--purple); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
 }
 .ppn-rows { display: flex; flex-direction: column; gap: 8px; }
@@ -777,6 +922,63 @@ td:first-child { color: var(--ink); font-weight: 600; }
   font-weight: 500; line-height: 1.5;
 }
 
+/* ── PEMOTONGAN: compact spacing so both modes fit without scrolling ── */
+#page-potongan .panel-left { padding: 10px 14px; }
+#page-potongan .panel-right { padding: 12px 16px; }
+#page-potongan .sect-label { margin-bottom: 3px; }
+
+#page-potongan .pkp-toggle-wrap { margin-bottom: 5px; }
+#page-potongan .pkp-card { padding: 5px 6px; }
+#page-potongan .pkp-icon { font-size: 15px; margin-bottom: 1px; }
+#page-potongan .pkp-title { font-size: 11px; }
+#page-potongan .pkp-desc { font-size: 9px; margin-top: 1px; }
+#page-potongan .pkp-badge { margin-top: 2px; }
+#page-potongan .pkp-info-box { padding: 5px 8px; font-size: 10px; margin-bottom: 5px; line-height: 1.35; }
+
+#page-potongan .pot-mode-toggle { margin-bottom: 8px; }
+#page-potongan .pot-mode-btn { padding: 6px 8px; font-size: 10.5px; }
+
+#page-potongan .pot-type-grid { margin-bottom: 4px; }
+#page-potongan .pot-type-card { padding: 4px 7px; }
+
+#page-potongan .tax-info-box { padding: 5px 8px !important; margin-bottom: 5px !important; font-size: 10.5px !important; }
+#page-potongan .input-label { margin-bottom: 3px; }
+#page-potongan .input-wrap { margin-bottom: 5px !important; }
+#page-potongan .calc-input { padding: 7px 10px 7px 34px !important; font-size: 14px !important; }
+#page-potongan .calc-btn { padding: 8px !important; font-size: 12.5px !important; }
+
+#page-potongan #pot-items-list { max-height: none; }
+#page-potongan .pot-item-row { padding: 7px; margin-bottom: 6px; }
+#page-potongan .pot-item-row-top { margin-bottom: 6px; }
+#page-potongan .pot-item-tax-chips { gap: 4px; }
+#page-potongan .pot-tax-chip { padding: 4px 8px; font-size: 9.5px; }
+#page-potongan .pot-add-item-btn { padding: 7px; font-size: 11px; margin-bottom: 8px; }
+
+#page-potongan .result-highlight-green { padding: 8px 12px; margin-bottom: 8px; gap: 10px; }
+#page-potongan .rhg-value { font-size: 14px; }
+#page-potongan .rhg-sub { font-size: 10px; margin-top: 2px; }
+#page-potongan .result-card { padding: 8px 10px; margin-bottom: 6px; }
+#page-potongan .result-rows { gap: 5px; }
+#page-potongan .rr { padding: 6px 9px; }
+#page-potongan .rr-label { font-size: 10.5px; }
+#page-potongan .rr-val { font-size: 12px; }
+#page-potongan .rr.highlight-cut,
+#page-potongan .rr.highlight-total { padding: 9px 12px; border-width: 1.5px; }
+#page-potongan .rr.highlight-cut .rr-label,
+#page-potongan .rr.highlight-total .rr-label { font-size: 11.5px; }
+#page-potongan .rr.highlight-cut .rr-val,
+#page-potongan .rr.highlight-total .rr-val { font-size: 17px; }
+
+#page-potongan .ppn-section { padding: 9px 12px; margin-bottom: 8px; }
+#page-potongan .ppn-section-title { margin-bottom: 6px; font-size: 11.5px; }
+#page-potongan .ppn-rows { gap: 5px; }
+#page-potongan .ppn-row { padding: 6px 9px; }
+#page-potongan .ppn-row-label { font-size: 10.5px; }
+#page-potongan .ppn-row-val { font-size: 12px; }
+#page-potongan .faktur-badge { padding: 7px 10px; margin-top: 6px; font-size: 10px; }
+#page-potongan .result-formula { padding: 7px 9px; font-size: 10px; line-height: 1.5; }
+#page-potongan .reset-btn { padding: 7px; margin-top: 8px; font-size: 11px; }
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
@@ -787,26 +989,53 @@ td:first-child { color: var(--ink); font-weight: 600; }
 <body>
 
 <div class="sidebar">
-  <a class="sidebar-logo" href="#">
-    <div class="logo-icon">💰</div>
-    <span class="logo-text">GAS<span>POL</span></span>
+  <a class="sidebar-logo" href="#" title="GASPOL — Gross-Up, Akurasi, Sistem Pemotongan, Pajak Optimal & Lengkap">
+    <div class="logo-icon">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gaugeArc" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF6B6B"/>
+            <stop offset="55%" stop-color="var(--brand)"/>
+            <stop offset="100%" stop-color="var(--brand-dark)"/>
+          </linearGradient>
+        </defs>
+        <!-- gauge dial track -->
+        <path d="M 8.5 27.5 A 14 14 0 1 1 31.5 27.5" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="3.6" stroke-linecap="round"/>
+        <!-- gauge dial active arc -->
+        <path d="M 8.5 27.5 A 14 14 0 1 1 27 30.6" fill="none" stroke="url(#gaugeArc)" stroke-width="3.6" stroke-linecap="round"/>
+        <!-- ticks -->
+        <line x1="8.7" y1="22" x2="11.2" y2="22" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="20" y1="8.8" x2="20" y2="11.4" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="31.3" y1="22" x2="28.8" y2="22" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- needle pointing to upper-right (full throttle) -->
+        <line x1="20" y1="24" x2="27.5" y2="14.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="20" cy="24" r="3" fill="#fff"/>
+        <circle cx="20" cy="24" r="1.3" fill="var(--brand)"/>
+      </svg>
+    </div>
+    <div class="logo-block">
+      <span class="logo-text">GAS<span>POL</span></span>
+    </div>
   </a>
   <nav class="sidebar-nav">
     <button class="nav-tab active" onclick="switchPage('calc', this)">
-      <span class="nav-tab-icon">🧮</span>
+      <span class="nav-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/><line x1="8" y1="19" x2="8.01" y2="19"/><line x1="12" y1="19" x2="12.01" y2="19"/></svg></span>
       <span class="nav-tab-label">Gross-Up</span>
     </button>
     <button class="nav-tab" onclick="switchPage('potongan', this)">
-      <span class="nav-tab-icon">✂️</span>
+      <span class="nav-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span>
       <span class="nav-tab-label">Pemotongan</span>
     </button>
     <button class="nav-tab" onclick="switchPage('glossary', this)">
-      <span class="nav-tab-icon">📖</span>
+      <span class="nav-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
       <span class="nav-tab-label">Glosarium</span>
     </button>
   </nav>
   <div class="sidebar-footer">
-    GASPOL © 2026<br>Referensi pajak Indonesia
+    <div class="footer-acronym">
+      <b>G</b>ross-Up · <b>A</b>kurasi · <b>S</b>istem Pemotongan<br><b>P</b>ajak · <b>O</b>ptimal · <b>L</b>engkap
+    </div>
+    <div class="footer-copy">GASPOL © 2026</div>
   </div>
 </div>
 
@@ -863,7 +1092,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
               <div class="type-info">
                 <h3>Jasa</h3>
                 <p>Imbalan atas pekerjaan atau layanan</p>
-                <span class="type-tag tag-blue">PPh 21 / PPh 23</span>
+                <span class="type-tag tag-teal">PPh 21 / PPh 23</span>
               </div>
             </div>
             <div class="type-card" onclick="selectType('sewa-lain', this)">
@@ -971,7 +1200,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
 <div class="page" id="page-potongan">
   <div class="calc-layout">
 
-    <div class="calc-topbar" style="background:linear-gradient(135deg,var(--green) 0%,#10B981 100%);">
+    <div class="calc-topbar" style="--topbar-accent:var(--green);">
       <div class="ch-icon">✂️</div>
       <div>
         <h2>Kalkulator Pemotongan Pajak</h2>
@@ -1018,6 +1247,15 @@ td:first-child { color: var(--ink); font-weight: 600; }
 
         <!-- JENIS TRANSAKSI -->
         <div id="pot-transaksi-section" style="display:none;">
+
+          <div class="sect-label" style="margin-bottom:6px;">Mode Perhitungan</div>
+          <div class="pot-mode-toggle">
+            <button class="pot-mode-btn active" id="pot-mode-btn-single" onclick="switchPotMode('single', this)">🧾 Transaksi Tunggal</button>
+            <button class="pot-mode-btn" id="pot-mode-btn-multi" onclick="switchPotMode('multi', this)">🧮 Multi-Item (Campuran)</button>
+          </div>
+
+          <!-- MODE: Transaksi Tunggal (satu jenis transaksi, satu nominal) -->
+          <div id="pot-mode-single">
           <div class="sect-label" style="margin-bottom:6px;">Jenis Transaksi</div>
           <div class="pot-type-grid">
             <div class="pot-type-card" onclick="selectPotType('jasa-op', this)">
@@ -1080,6 +1318,18 @@ td:first-child { color: var(--ink); font-weight: 600; }
             </div>
             <button class="calc-btn" style="background:linear-gradient(135deg,var(--green) 0%,#10B981 100%);box-shadow:0 4px 12px rgba(5,150,105,.3);padding:9px;" onclick="calculatePotongan()">✂️ Hitung Pemotongan</button>
           </div>
+          </div><!-- /pot-mode-single -->
+
+          <!-- MODE: Multi-Item (satu NC, campuran item kena & tidak kena PPh) -->
+          <div id="pot-mode-multi" style="display:none;">
+            <div class="sect-label" style="margin-bottom:2px;">Daftar Item Transaksi</div>
+            <p style="font-size:10px;color:var(--gray-600);margin-bottom:6px;line-height:1.35;">
+              1 NC, beberapa baris memo — pilih tarif hanya pada item yang kena pajak.
+            </p>
+            <div id="pot-items-list"></div>
+            <button class="pot-add-item-btn" onclick="addPotItem()">+ Tambah Item</button>
+            <button class="calc-btn" style="background:linear-gradient(135deg,var(--green) 0%,#10B981 100%);box-shadow:0 4px 12px rgba(5,150,105,.3);padding:8px;" onclick="calculatePotonganMulti()">✂️ Hitung Total Pembayaran</button>
+          </div><!-- /pot-mode-multi -->
 
         </div>
 
@@ -1177,13 +1427,13 @@ td:first-child { color: var(--ink); font-weight: 600; }
           <tr>
             <td>PPh 21</td>
             <td>Jasa / Reward — Orang Pribadi</td>
-            <td><span class="rpill rpill-blue">±2,5% TER*</span></td>
+            <td><span class="rpill rpill-teal">±2,5% TER*</span></td>
             <td>Tidak Final</td>
           </tr>
           <tr>
             <td>PPh 23</td>
             <td>Jasa — Badan Usaha</td>
-            <td><span class="rpill rpill-blue">2%</span></td>
+            <td><span class="rpill rpill-teal">2%</span></td>
             <td>Tidak Final</td>
           </tr>
           <tr>
@@ -1195,7 +1445,7 @@ td:first-child { color: var(--ink); font-weight: 600; }
           <tr>
             <td>PPh 23</td>
             <td>Sewa selain tanah/bangunan</td>
-            <td><span class="rpill rpill-blue">2%</span></td>
+            <td><span class="rpill rpill-teal">2%</span></td>
             <td>Tidak Final</td>
           </tr>
           <tr>
@@ -1240,7 +1490,8 @@ td:first-child { color: var(--ink); font-weight: 600; }
 //  STATE
 // ══════════════════════════════════
 let S = { type: null, recipient: null, tarif: null, tarifLabel: null };
-let POT = { pkp: null, type: null, tarif: null, tarifLabel: null };
+let POT = { pkp: null, type: null, tarif: null, tarifLabel: null, mode: 'single', items: [] };
+let potItemSeq = 0;
 
 // ══════════════════════════════════
 //  PAGE SWITCH
@@ -1363,7 +1614,7 @@ function calculate() {
   document.getElementById('result-rows').innerHTML = `
     <div class="rr green-row"><span class="rr-label">✅ Vendor Terima Bersih (Nett)</span><span class="rr-val green">${rp(nett)}</span></div>
     <div class="rr red-row"><span class="rr-label">🏛️ ${S.tarifLabel} (ditanggung pembayar)</span><span class="rr-val red">${rp(pajak)}</span></div>
-    <div class="rr blue-row"><span class="rr-label">📝 Disetor ke Kas Negara</span><span class="rr-val blue">${rp(pajak)}</span></div>
+    <div class="rr teal-row"><span class="rr-label">📝 Disetor ke Kas Negara</span><span class="rr-val teal">${rp(pajak)}</span></div>
   `;
   document.getElementById('result-formula').innerHTML =
     `<strong>📘 Formula Gross-Up:</strong><br>
@@ -1449,6 +1700,16 @@ function selectPotType(type, el) {
   setTimeout(() => document.getElementById('pot-nominal-input').focus(), 80);
 }
 
+// Simplified one-click tax options for Multi-Item mode — merges jenis transaksi
+// that share the same rate/pasal, so a user only needs one click per item.
+const POT_QUICK_TAX = {
+  none:     { kena: false, tarif: 0,     label: 'Tidak Kena Pajak' },
+  pph21:    { kena: true,  tarif: 0.025, label: 'PPh 21 · 2,5%' },
+  pph23_2:  { kena: true,  tarif: 0.02,  label: 'PPh 23 · 2%' },
+  pph42_10: { kena: true,  tarif: 0.10,  label: 'PPh 4(2) · 10% Final' },
+  pph23_15: { kena: true,  tarif: 0.15,  label: 'PPh 23 · 15%' },
+};
+
 function formatPotInput(el) {
   const raw = el.value.replace(/[^0-9]/g, '');
   el.value = raw ? parseInt(raw).toLocaleString('id-ID') : '';
@@ -1471,13 +1732,13 @@ function calculatePotongan() {
 
   document.getElementById('pot-res-nett').textContent = rp(nett);
   document.getElementById('pot-res-sub').innerHTML =
-    `Tagihan ${rp(totalTagihan)} · PPh dipotong ${rp(pph)}`;
+    `Total Tagihan ${rp(totalTagihan)} · PPh dipotong ${rp(pph)}`;
 
   document.getElementById('pot-result-rows').innerHTML = `
     <div class="rr"><span class="rr-label">📋 DPP</span><span class="rr-val">${rp(dpp)}</span></div>
-    ${isPKP ? `<div class="rr blue-row"><span class="rr-label">🟣 PPN 11%</span><span class="rr-val blue">${rp(ppn)}</span></div>` : ''}
+    ${isPKP ? `<div class="rr teal-row"><span class="rr-label">🟣 PPN 11%</span><span class="rr-val teal">${rp(ppn)}</span></div>` : ''}
     <div class="rr highlight-cut"><span class="rr-label">✂️ Pemotongan ${POT.tarifLabel}</span><span class="rr-val">− ${rp(pph)}</span></div>
-    <div class="rr highlight-total"><span class="rr-label">⭐ Nilai Akhir / Total Amount</span><span class="rr-val">${rp(nett)}</span></div>
+    <div class="rr highlight-total"><span class="rr-label">⭐ Total Pembayaran ke Vendor</span><span class="rr-val">${rp(nett)}</span></div>
   `;
 
   if (isPKP) {
@@ -1505,7 +1766,7 @@ function calculatePotongan() {
 }
 
 function resetPotongan() {
-  POT = { pkp: null, type: null, tarif: null, tarifLabel: null };
+  POT = { pkp: null, type: null, tarif: null, tarifLabel: null, mode: 'single', items: [] };
   document.querySelectorAll('.pkp-card, .pot-type-card').forEach(c => c.classList.remove('selected'));
   document.getElementById('pkp-info-box').className = 'pkp-info-box';
   document.getElementById('pot-transaksi-section').style.display = 'none';
@@ -1514,6 +1775,155 @@ function resetPotongan() {
   document.getElementById('pot-result-inner').style.display = 'none';
   document.getElementById('reset-btn-pot').style.display = 'none';
   document.getElementById('pot-nominal-input').value = '';
+  // reset mode toggle back to Transaksi Tunggal
+  document.getElementById('pot-mode-btn-single').classList.add('active');
+  document.getElementById('pot-mode-btn-multi').classList.remove('active');
+  document.getElementById('pot-mode-single').style.display = 'block';
+  document.getElementById('pot-mode-multi').style.display = 'none';
+  document.getElementById('pot-items-list').innerHTML = '';
+}
+
+// ══════════════════════════════════
+//  PEMOTONGAN — MODE MULTI-ITEM (1 NC, campuran item kena & tidak kena PPh)
+// ══════════════════════════════════
+function switchPotMode(mode, btn) {
+  POT.mode = mode;
+  document.querySelectorAll('.pot-mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pot-mode-single').style.display = mode === 'single' ? 'block' : 'none';
+  document.getElementById('pot-mode-multi').style.display = mode === 'multi' ? 'block' : 'none';
+  document.getElementById('pot-empty-state').style.display = 'flex';
+  document.getElementById('pot-result-inner').style.display = 'none';
+  document.getElementById('reset-btn-pot').style.display = 'none';
+  if (mode === 'multi' && POT.items.length === 0) {
+    addPotItem();
+    addPotItem();
+  }
+}
+
+function potTypeName(k) {
+  const names = {
+    'jasa-op': 'Jasa Orang Pribadi', 'jasa-badan': 'Jasa Badan Usaha',
+    'sewa-tanah': 'Sewa Tanah/Bangunan', 'sewa-lain': 'Sewa Selain T/B',
+    'reward-op': 'Reward Orang Pribadi', 'reward-badan': 'Reward Badan Usaha'
+  };
+  return names[k] || k;
+}
+
+function addPotItem() {
+  POT.items.push({ id: potItemSeq++, jumlah: 0, taxKey: 'none' });
+  renderPotItems();
+}
+
+function removePotItem(id) {
+  POT.items = POT.items.filter(it => it.id !== id);
+  renderPotItems();
+  document.getElementById('pot-result-inner').style.display = 'none';
+  document.getElementById('pot-empty-state').style.display = 'flex';
+}
+
+function updatePotItemField(id, field, value) {
+  const it = POT.items.find(x => x.id === id);
+  if (!it) return;
+  it[field] = value;
+  if (field === 'taxKey') renderPotItems();
+}
+
+function formatPotItemInput(el, id) {
+  const raw = el.value.replace(/[^0-9]/g, '');
+  el.value = raw ? parseInt(raw).toLocaleString('id-ID') : '';
+  updatePotItemField(id, 'jumlah', parseInt(raw) || 0);
+}
+
+function renderPotItems() {
+  const wrap = document.getElementById('pot-items-list');
+  if (!POT.items.length) {
+    wrap.innerHTML = '<div class="pot-items-empty">Belum ada item. Klik "+ Tambah Item" untuk mulai.</div>';
+    return;
+  }
+  wrap.innerHTML = POT.items.map((it, idx) => `
+    <div class="pot-item-row">
+      <div class="pot-item-row-top">
+        <span class="pot-item-no">#${idx + 1}</span>
+        <div class="input-wrap pot-item-jumlah-wrap">
+          <span class="input-prefix">Rp</span>
+          <input type="text" class="calc-input pot-item-jumlah" placeholder="0"
+            value="${it.jumlah ? it.jumlah.toLocaleString('id-ID') : ''}"
+            oninput="formatPotItemInput(this, ${it.id})">
+        </div>
+        <button class="pot-item-remove" onclick="removePotItem(${it.id})" title="Hapus item">✕</button>
+      </div>
+      <div class="pot-item-tax-chips">
+        ${Object.entries(POT_QUICK_TAX).map(([k, v]) => `
+          <button type="button" class="pot-tax-chip ${k === 'none' ? 'none-chip' : ''} ${(it.taxKey || 'none') === k ? 'selected' : ''}"
+            onclick="updatePotItemField(${it.id},'taxKey','${k}')">${v.label}</button>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function calculatePotonganMulti() {
+  const validItems = POT.items.filter(it => it.jumlah > 0);
+  if (!validItems.length) return;
+
+  const isPKP = POT.pkp === 'pkp';
+  let totalDPP = 0, totalPPh = 0;
+  const breakdown = [];
+
+  POT.items.forEach((it, idx) => {
+    totalDPP += it.jumlah || 0;
+    const conf = POT_QUICK_TAX[it.taxKey || 'none'];
+    if (conf.kena && it.jumlah > 0) {
+      const pphItem = it.jumlah * conf.tarif;
+      totalPPh += pphItem;
+      breakdown.push({
+        desc: `Item #${idx + 1}`,
+        tarifLabel: conf.label,
+        pph: pphItem
+      });
+    }
+  });
+
+  const ppn = isPKP ? totalDPP * 0.11 : 0;
+  const totalTagihan = totalDPP + ppn;
+  const nett = totalTagihan - totalPPh;
+
+  document.getElementById('pot-res-nett').textContent = rp(nett);
+  document.getElementById('pot-res-sub').innerHTML =
+    `${POT.items.length} item · Total DPP ${rp(totalDPP)} · PPh dipotong ${rp(totalPPh)}`;
+
+  document.getElementById('pot-result-rows').innerHTML = `
+    <div class="rr"><span class="rr-label">📋 Total DPP (${POT.items.length} item)</span><span class="rr-val">${rp(totalDPP)}</span></div>
+    ${isPKP ? `<div class="rr teal-row"><span class="rr-label">🟣 PPN 11%</span><span class="rr-val teal">${rp(ppn)}</span></div>` : ''}
+    ${breakdown.length ? breakdown.map(b =>
+      `<div class="rr"><span class="rr-label" style="font-size:10.5px;">✂️ ${b.desc} <em style="opacity:.7;">(${b.tarifLabel})</em></span><span class="rr-val" style="font-size:12px;">− ${rp(b.pph)}</span></div>`
+    ).join('') : `<div class="rr"><span class="rr-label" style="font-size:10.5px;opacity:.7;">Tidak ada item yang kena PPh</span><span class="rr-val">—</span></div>`}
+    <div class="rr highlight-cut"><span class="rr-label">✂️ Total PPh Dipotong</span><span class="rr-val">− ${rp(totalPPh)}</span></div>
+    <div class="rr highlight-total"><span class="rr-label">⭐ Total Pembayaran ke Vendor</span><span class="rr-val">${rp(nett)}</span></div>
+  `;
+
+  if (isPKP) {
+    document.getElementById('ppn-section').style.display = 'block';
+    document.getElementById('ppn-rows').innerHTML = `
+      <div class="ppn-row"><span class="ppn-row-label">Total DPP</span><span class="ppn-row-val">${rp(totalDPP)}</span></div>
+      <div class="ppn-row"><span class="ppn-row-label">PPN 11%</span><span class="ppn-row-val">${rp(ppn)}</span></div>
+      <div class="ppn-row" style="background:var(--purple-light);"><span class="ppn-row-label" style="font-weight:700;">Total Tagihan (DPP + PPN)</span><span class="ppn-row-val" style="font-size:15px;">${rp(totalTagihan)}</span></div>
+    `;
+  } else {
+    document.getElementById('ppn-section').style.display = 'none';
+  }
+
+  document.getElementById('pot-result-formula').innerHTML =
+    `<strong>📘 Ringkasan:</strong><br>
+     Total DPP (semua item) = ${rp(totalDPP)}<br>
+     ${isPKP ? `PPN 11% = ${rp(totalDPP)} × 11% = <strong>${rp(ppn)}</strong><br>Total Tagihan = DPP + PPN = <strong>${rp(totalTagihan)}</strong><br>` : ''}
+     Total PPh Dipotong (hanya item bertanda "Kena PPh") = <strong>${rp(totalPPh)}</strong><br>
+     Total Pembayaran ke Vendor = ${rp(totalTagihan)} − ${rp(totalPPh)} = <strong>${rp(nett)}</strong>`;
+
+  document.getElementById('pot-empty-state').style.display = 'none';
+  document.getElementById('pot-result-inner').style.display = 'block';
+  document.getElementById('reset-btn-pot').style.display = 'flex';
 }
 
 // ══════════════════════════════════
