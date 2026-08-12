@@ -3053,6 +3053,16 @@ function cbNoMatchPrompt() {
 function cbAsk(text) {
   const q = (text !== undefined ? text : document.getElementById('cb-input').value).trim();
   if (!q) return;
+
+  // ── Kalau sedang live chat dengan CS, pesan ini langsung dikirim ke CS —
+  //     tidak diproses lagi oleh mesin pencarian/kalkulasi bot. ──
+  if (cbLiveSession) {
+    cbAddUserMsg(q);
+    document.getElementById('cb-input').value = '';
+    cbSendLiveMessage(q);
+    return;
+  }
+
   cbAddUserMsg(q);
   cbLastQuestion = q;
   document.getElementById('cb-input').value = '';
@@ -3216,16 +3226,106 @@ async function cbCheckCsOnline() {
   }
 }
 
+/** Titik masuk saat user klik "Hubungkan ke CS" / "Belum sesuai? Tanya CS".
+ *  Kalau CS online → langsung live chat, TANPA form apa pun.
+ *  Kalau offline → minta Nama/HP/Email dulu (karena ini "tinggalkan pesan", dibalas async). */
 async function cbOpenEscalation() {
+  if (!CS_SCRIPT_URL) {
+    cbAddBotHtml(`Fitur ini belum dikonfigurasi (SCRIPT_URL kosong). Hubungi admin GASPOL.`);
+    return;
+  }
+  cbAddBotHtml(`Menyambungkan ke Tim Tax TDM...`);
   const online = await cbCheckCsOnline();
-  const statusLine = online
-    ? `<div class="cb-note" style="background:#e8f5ee;border-left:3px solid #2e9e5b;">🟢 <b>CS sedang online</b> — kalau beruntung, balasannya bisa langsung muncul di chat ini!</div>`
-    : `<div class="cb-note" style="background:#fdeef0;border-left:3px solid #d9838f;">🔴 <b>CS sedang offline</b> — pertanyaan akan dijawab dalam <b>1×24 jam</b> lewat WhatsApp &amp; Email.</div>`;
+  if (online) {
+    cbStartLiveChat();
+  } else {
+    cbShowLeaveMessageForm();
+  }
+}
 
+/* ── 7a. LIVE CHAT (saat CS online) ─────────────────────────
+   Tidak ada form sama sekali — user langsung ngobrol lewat kolom chat utama,
+   pesan diteruskan real-time (polling ringan) ke/​dari Tim Tax lewat Google Sheets. */
+let cbLiveSession = null; // { id, since, pollHandle, lastActivity }
+
+function cbGenSessionId() {
+  return 'S' + Date.now() + Math.random().toString(36).slice(2, 8);
+}
+
+function cbStartLiveChat() {
+  const sessionId = cbGenSessionId();
+  cbLiveSession = { id: sessionId, since: 0, lastActivity: Date.now() };
+
+  cbAddBotHtml(`🟢 <b>Tersambung dengan Tim Tax TDM!</b> Ketik pesan Anda seperti biasa di kolom bawah —
+    tidak perlu isi nama/nomor lagi, langsung ngobrol saja.
+    <div class="cb-actions">
+      <button class="cb-btn cb-btn-ghost" onclick="cbEndLiveChat()">🔚 Akhiri chat</button>
+    </div>`);
+
+  // kalau sebelumnya user sudah sempat ketik pertanyaan (yang bikin bot bingung),
+  // teruskan otomatis sebagai pesan pertama supaya tidak perlu diketik ulang
+  if (cbLastQuestion) {
+    cbSendLiveMessage(cbLastQuestion);
+  }
+
+  cbLivePollLoop();
+}
+
+function cbEndLiveChat() {
+  if (!cbLiveSession) return;
+  if (cbLiveSession.pollHandle) clearInterval(cbLiveSession.pollHandle);
+  cbLiveSession = null;
+  cbAddBotHtml(`Sesi chat diakhiri. Kalau ada pertanyaan lain, silakan ketik lagi ya 🙂`);
+}
+
+async function cbSendLiveMessage(text) {
+  if (!cbLiveSession) return;
+  cbLiveSession.lastActivity = Date.now();
+  try {
+    await fetch(CS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'live_send', sessionId: cbLiveSession.id, sender: 'user', pesan: text })
+    });
+  } catch (err) { /* diamkan, polling tetap jalan */ }
+}
+
+function cbLivePollLoop() {
+  if (!cbLiveSession) return;
+  const session = cbLiveSession;
+  const MAX_IDLE_MS = 30 * 60 * 1000; // auto-selesai kalau 30 menit tak ada aktivitas apa pun
+
+  session.pollHandle = setInterval(async () => {
+    if (!cbLiveSession || cbLiveSession.id !== session.id) { clearInterval(session.pollHandle); return; }
+    if (Date.now() - session.lastActivity > MAX_IDLE_MS) {
+      clearInterval(session.pollHandle);
+      cbAddBotHtml(`Sesi chat berakhir otomatis karena tidak ada aktivitas. Ketik lagi kalau masih ada pertanyaan ya 🙂`);
+      cbLiveSession = null;
+      return;
+    }
+    try {
+      const res = await fetch(CS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'live_poll', sessionId: session.id, since: session.since })
+      });
+      const data = await res.json();
+      if (data.messages && data.messages.length) {
+        data.messages.forEach(m => {
+          cbAddBotHtml(`<div class="cb-card"><div class="cb-card-title">👤 Tim Tax TDM</div>
+            <div class="cb-note">${cbEscapeHtml(m.pesan)}</div></div>`);
+          if (m.ts > session.since) session.since = m.ts;
+        });
+        session.lastActivity = Date.now();
+      }
+    } catch (err) { /* coba lagi di interval berikutnya */ }
+  }, 4000);
+}
+
+/* ── 7b. TINGGALKAN PESAN (saat CS offline) ───────────────── */
+function cbShowLeaveMessageForm() {
   const html = `
     <div class="cb-form">
       <div class="cb-form-title">Teruskan ke Tim Tax TDM</div>
-      ${statusLine}
+      <div class="cb-note" style="background:#fdeef0;border-left:3px solid #d9838f;">🔴 <b>CS sedang offline</b> — tinggalkan pesan, akan dijawab dalam <b>1×24 jam</b> lewat WhatsApp &amp; Email.</div>
       <label>Nama</label>
       <input type="text" id="cb-f-nama" placeholder="Nama Anda">
       <label>No. WhatsApp</label>
@@ -3235,7 +3335,7 @@ async function cbOpenEscalation() {
       <label>Pertanyaan</label>
       <textarea id="cb-f-pertanyaan" rows="3">${cbEscapeHtml(cbLastQuestion)}</textarea>
       <div class="cb-actions">
-        <button class="cb-btn cb-btn-primary" id="cb-f-submit" data-online="${online ? '1' : '0'}" onclick="cbSubmitEscalation(this)">Kirim ke CS</button>
+        <button class="cb-btn cb-btn-primary" id="cb-f-submit" onclick="cbSubmitEscalation(this)">Kirim ke CS</button>
         <button class="cb-btn cb-btn-ghost" id="cb-f-batal" onclick="cbAddBotHtml('Baik, dibatalkan.')">Batal</button>
       </div>
       <div class="cb-form-msg" id="cb-form-msg"></div>
@@ -3258,7 +3358,6 @@ async function cbSubmitEscalation(btn) {
   const email = document.getElementById('cb-f-email').value.trim();
   const pertanyaan = document.getElementById('cb-f-pertanyaan').value.trim();
   const msgEl = document.getElementById('cb-form-msg');
-  const wasOnline = btn.dataset.online === '1';
 
   if (!nama || !hp || !email || !pertanyaan) {
     msgEl.textContent = 'Mohon lengkapi Nama, No. WhatsApp, Email, dan Pertanyaan — semuanya wajib diisi.';
@@ -3285,16 +3384,10 @@ async function cbSubmitEscalation(btn) {
   btn.textContent = 'Mengirim...';
 
   try {
-    const res = await fetch(CS_SCRIPT_URL, {
+    await fetch(CS_SCRIPT_URL, {
       method: 'POST',
       body: JSON.stringify({ nama, hp, email, pertanyaan, sumber: 'GASPOL Chatbot' })
     });
-    let rowId = null, online = wasOnline;
-    try {
-      const data = await res.json();
-      if (data.rowId) rowId = data.rowId;
-      if (typeof data.online === 'boolean') online = data.online;
-    } catch (parseErr) { /* respons tidak terbaca sebagai JSON, lanjutkan tanpa rowId */ }
 
     // ── Tandai form sudah terkirim, supaya tidak membingungkan user ──
     btn.textContent = '✅ Terkirim';
@@ -3308,42 +3401,14 @@ async function cbSubmitEscalation(btn) {
       if (el) el.disabled = true;
     });
 
-    if (online && rowId) {
-      cbAddBotHtml(`✅ Terkirim! CS sedang online — mohon tunggu sebentar ya, ${cbEscapeHtml(nama)}... 💬`);
-      cbPollForAnswer(rowId);
-    } else {
-      cbAddBotHtml(`✅ Terkirim! Terima kasih ${cbEscapeHtml(nama)}, tim Tax TDM akan menghubungi Anda
-        lewat WhatsApp <b>${cbEscapeHtml(hp)}</b> atau email <b>${cbEscapeHtml(email)}</b> dalam 1×24 jam.`);
-    }
+    cbAddBotHtml(`✅ Terkirim! Terima kasih ${cbEscapeHtml(nama)}, tim Tax TDM akan menghubungi Anda
+      lewat WhatsApp <b>${cbEscapeHtml(hp)}</b> atau email <b>${cbEscapeHtml(email)}</b> dalam 1×24 jam.`);
   } catch (err) {
     msgEl.textContent = 'Gagal mengirim. Periksa koneksi internet lalu coba lagi.';
     msgEl.className = 'cb-form-msg cb-form-err';
     btn.disabled = false;
     btn.textContent = 'Kirim ke CS';
   }
-}
-
-/** Polling ringan (tiap 6 detik, maks ~15 menit) untuk cek apakah CS sudah mengisi
- *  kolom Jawaban di Google Sheets — kalau iya, tampilkan sebagai balasan langsung di chat. */
-function cbPollForAnswer(rowId) {
-  let attempts = 0;
-  const maxAttempts = 150; // 150 x 6 detik ≈ 15 menit
-  const iv = setInterval(async () => {
-    attempts++;
-    if (attempts > maxAttempts) { clearInterval(iv); return; }
-    try {
-      const res = await fetch(CS_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'check_answer', row: rowId })
-      });
-      const data = await res.json();
-      if (data.answered && data.jawaban) {
-        clearInterval(iv);
-        cbAddBotHtml(`<div class="cb-card"><div class="cb-card-title">💬 Balasan dari Tim Tax TDM</div>
-          <div class="cb-note">${cbEscapeHtml(data.jawaban)}</div></div>`);
-      }
-    } catch (err) { /* coba lagi di interval berikutnya */ }
-  }, 6000);
 }
 
 /* ── 8. INIT ─────────────────────────────── */
