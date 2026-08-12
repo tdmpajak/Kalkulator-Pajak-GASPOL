@@ -3254,7 +3254,7 @@ function cbGenSessionId() {
 
 function cbStartLiveChat() {
   const sessionId = cbGenSessionId();
-  cbLiveSession = { id: sessionId, since: 0, lastActivity: Date.now() };
+  cbLiveSession = { id: sessionId, sinceRow: 1, lastActivity: Date.now() };
 
   cbAddBotHtml(`🟢 <b>Tersambung dengan Tim Tax TDM!</b> Ketik pesan Anda seperti biasa di kolom bawah —
     tidak perlu isi nama/nomor lagi, langsung ngobrol saja.
@@ -3305,16 +3305,19 @@ function cbLivePollLoop() {
     try {
       const res = await fetch(CS_SCRIPT_URL, {
         method: 'POST',
-        body: JSON.stringify({ action: 'live_poll', sessionId: session.id, since: session.since })
+        body: JSON.stringify({ action: 'live_poll', sessionId: session.id, sinceRow: session.sinceRow })
       });
       const data = await res.json();
       if (data.messages && data.messages.length) {
         data.messages.forEach(m => {
           cbAddBotHtml(`<div class="cb-card"><div class="cb-card-title">👤 Tim Tax TDM</div>
             <div class="cb-note">${cbEscapeHtml(m.pesan)}</div></div>`);
-          if (m.ts > session.since) session.since = m.ts;
+          if (m.row > session.sinceRow) session.sinceRow = m.row;
         });
         session.lastActivity = Date.now();
+      } else if (typeof data.lastRow === 'number' && data.lastRow > session.sinceRow) {
+        // tidak ada balasan CS baru, tapi ada aktivitas baris lain (mis. pesan user sendiri) — geser cursor
+        session.sinceRow = data.lastRow;
       }
     } catch (err) { /* coba lagi di interval berikutnya */ }
   }, 4000);
