@@ -118,6 +118,16 @@ body {
 .nav-tab.active { background: var(--brand-pale); color: var(--brand); }
 .nav-tab.active .nav-tab-label { font-weight: 700; }
 
+.nav-download {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 12px; margin: 6px 8px 0; border-radius: 9px;
+  border: 1.5px dashed var(--gray-200); background: var(--white);
+  color: var(--gray-600); text-decoration: none; font-size: 12.5px; font-weight: 600;
+  transition: .15s; cursor: pointer;
+}
+.nav-download:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-pale); }
+.nav-download .nav-tab-icon { font-size: 15px; display: flex; }
+
 .sidebar-footer {
   padding: 12px 16px 14px;
   border-top: 1px solid var(--gray-100);
@@ -1156,6 +1166,59 @@ input:checked + .slider::before{transform:translateX(16px);}
 ::-webkit-scrollbar-thumb{background:#C9C0A9;border-radius:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 
+
+/* ══ TANYA PAJAK — CHATBOT ══ */
+#page-chatbot { overflow-y: hidden; padding: 0; }
+#page-chatbot.active { display: flex; flex-direction: column; height: 100%; }
+.cb-wrap { display:flex; flex-direction:column; height:100%; max-width:760px; margin:0 auto; width:100%; padding:20px 24px 16px; box-sizing:border-box; }
+.cb-hero { display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-shrink:0; }
+.cb-hero-icon { width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--brand-dark)); display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:var(--shadow-sm); flex-shrink:0; }
+.cb-hero h2 { margin:0; font-size:18px; color:var(--gray-900); }
+.cb-hero p { margin:2px 0 0; font-size:12px; color:var(--gray-400); }
+
+.cb-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; flex-shrink:0; }
+.cb-chip { border:1px solid var(--gray-200); background:var(--white); color:var(--gray-700); font-size:12px; padding:6px 12px; border-radius:999px; cursor:pointer; transition:.15s; }
+.cb-chip:hover { border-color:var(--brand); color:var(--brand); background:var(--brand-pale); }
+
+#cb-messages { flex:1; overflow-y:auto; border:1px solid var(--gray-200); border-radius:var(--radius); background:var(--white); padding:16px; display:flex; flex-direction:column; gap:14px; box-shadow:var(--shadow-sm); }
+.cb-msg { display:flex; gap:8px; align-items:flex-start; max-width:100%; }
+.cb-msg-user { justify-content:flex-end; }
+.cb-avatar { width:28px; height:28px; border-radius:50%; background:var(--brand-pale); display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.cb-bubble { padding:10px 14px; border-radius:14px; font-size:13.5px; line-height:1.55; max-width:88%; }
+.cb-bubble-bot { background:var(--gray-50); color:var(--ink); border:1px solid var(--gray-100); border-top-left-radius:4px; }
+.cb-bubble-user { background:var(--brand); color:#fff; border-top-right-radius:4px; }
+
+.cb-card { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:10px 12px; margin:8px 0; }
+.cb-card-title { font-weight:700; font-size:13.5px; color:var(--gray-900); margin-bottom:6px; }
+.cb-row { display:flex; justify-content:space-between; gap:10px; font-size:12.5px; padding:3px 0; border-bottom:1px dashed var(--gray-100); }
+.cb-row:last-child { border-bottom:none; }
+.cb-row span { color:var(--gray-400); }
+.cb-note { font-size:12px; color:var(--gray-600); margin-top:6px; background:var(--gray-50); border-radius:8px; padding:6px 8px; }
+.cb-coa { color:var(--brand); font-family:monospace; font-size:13px; }
+
+.cb-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.cb-btn { border:none; border-radius:999px; padding:7px 14px; font-size:12.5px; cursor:pointer; font-weight:600; transition:.15s; }
+.cb-btn-primary { background:var(--brand); color:#fff; }
+.cb-btn-primary:hover { background:var(--brand-dark); }
+.cb-btn-primary:disabled { opacity:.6; cursor:default; }
+.cb-btn-ghost { background:var(--white); color:var(--gray-600); border:1px solid var(--gray-200); }
+.cb-btn-ghost:hover { border-color:var(--brand); color:var(--brand); }
+
+.cb-form { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:12px; margin-top:8px; }
+.cb-form-title { font-weight:700; font-size:13px; margin-bottom:8px; color:var(--gray-900); }
+.cb-form label { display:block; font-size:11.5px; color:var(--gray-400); margin:8px 0 3px; }
+.cb-form input, .cb-form textarea { width:100%; box-sizing:border-box; border:1px solid var(--gray-200); border-radius:8px; padding:8px 10px; font-size:13px; font-family:inherit; resize:vertical; }
+.cb-form input:focus, .cb-form textarea:focus { outline:none; border-color:var(--brand); }
+.cb-form-msg { font-size:12px; margin-top:8px; }
+.cb-form-err { color:var(--red); }
+
+.cb-input-bar { display:flex; gap:8px; margin-top:12px; flex-shrink:0; }
+#cb-input { flex:1; border:1px solid var(--gray-200); border-radius:999px; padding:11px 16px; font-size:13.5px; font-family:inherit; }
+#cb-input:focus { outline:none; border-color:var(--brand); }
+.cb-send { background:var(--brand); color:#fff; border:none; border-radius:50%; width:42px; height:42px; flex-shrink:0; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:.15s; }
+.cb-send:hover { background:var(--brand-dark); }
+
+
 </style>
 </head>
 <body>
@@ -1202,7 +1265,15 @@ input:checked + .slider::before{transform:translateX(16px);}
       <span class="nav-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
       <span class="nav-tab-label">Glosarium</span>
     </button>
+    <button class="nav-tab" onclick="switchPage('chatbot', this)">
+      <span class="nav-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <span class="nav-tab-label">Tanya Pajak</span>
+    </button>
   </nav>
+  <a class="nav-download" href="GASPOL_Buku_Panduan.pdf" download title="Unduh Buku Panduan Penggunaan GASPOL (PDF)">
+    <span class="nav-tab-icon">⬇️</span>
+    <span>Unduh Panduan (PDF)</span>
+  </a>
   <div class="sidebar-footer">
     <div class="footer-acronym">
       <b>G</b>ross-Up · <b>A</b>kurasi · <b>S</b>istem Pemotongan<br><b>P</b>ajak · <b>O</b>ptimal · <b>L</b>engkap
@@ -1703,6 +1774,34 @@ input:checked + .slider::before{transform:translateX(16px);}
 
 </div><!-- /page-glossary -->
 
+<!-- ══ TANYA PAJAK — CHATBOT ══ -->
+<div class="page" id="page-chatbot">
+  <div class="cb-wrap">
+    <div class="cb-hero">
+      <div class="cb-hero-icon">🤖</div>
+      <div>
+        <h2>Tanya Pajak</h2>
+        <p>Tanya transaksi, tarif PPh, atau kode COA — dijawab otomatis dari data GASPOL</p>
+      </div>
+    </div>
+
+    <div class="cb-chips">
+      <button class="cb-chip" onclick="cbAskChip('Cetak banner kena pajak apa dan tarifnya berapa')">Cetak banner — pajak &amp; tarif</button>
+      <button class="cb-chip" onclick="cbAskChip('COA sewa tempat pameran')">COA sewa pameran</button>
+      <button class="cb-chip" onclick="cbAskChip('Reimburse karyawan kena pajak tidak')">Reimburse karyawan</button>
+      <button class="cb-chip" onclick="cbAskChip('Sewa mobil vendor orang pribadi 5 juta gross up berapa?')">Hitung gross-up sewa mobil</button>
+    </div>
+
+    <div id="cb-messages"></div>
+
+    <div class="cb-input-bar">
+      <input type="text" id="cb-input" placeholder="Ketik pertanyaan, mis. 'COA cetak banner apa?'" onkeydown="cbHandleKey(event)">
+      <button class="cb-send" onclick="cbAsk()" title="Kirim">➤</button>
+    </div>
+  </div>
+</div>
+<!-- /page-chatbot -->
+
 
 </main>
 </div>
@@ -1724,6 +1823,7 @@ function switchPage(id, btn) {
   document.getElementById('page-' + id).classList.add('active');
   btn.classList.add('active');
   if (id === 'glossary') renderGlossary();
+  if (id === 'chatbot') cbInit();
 }
 
 // ══════════════════════════════════
@@ -2210,6 +2310,954 @@ function filterGlossary(val) {
 // ── INIT ──
 updateSteps(1);
 renderGlossary();
+
+const KB_TRANSAKSI_PAJAK = [{"transaksi": "Cetak Banner, Spanduk, flagchain", "vendor": "Eliesier, DE21GN", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Keamanan", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "GROSSUP", "catatan2": ""}, {"transaksi": "Sewa Tempat pameran", "vendor": "CV. Chandra, sekawan chandra", "jenis_pajak": "4(2)", "tarif": "0.1", "catatan": "", "catatan2": ""}, {"transaksi": "Pembayaran Petugas OB", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Utang Klaim KPB ke Dealer", "vendor": "Excel KPB, ambil faktur pajaknya", "jenis_pajak": "23", "tarif": "2%,", "catatan": "", "catatan2": ""}, {"transaksi": "Konsultan Fees", "vendor": "Take Video", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Repair & Maintenance", "vendor": "Lihat Jasa nya", "jenis_pajak": "21.23", "tarif": "", "catatan": "", "catatan2": ""}, {"transaksi": "Isi Ulang Tabung APAR", "vendor": "BPBD", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Tenaga Bantu", "vendor": "Ahmad Sunar Fajri", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Loading & Unloading", "vendor": "", "jenis_pajak": "21", "tarif": "", "catatan": "", "catatan2": ""}, {"transaksi": "Pameran", "vendor": ",PT Bintang Mulia, PT Tunas Motor Pratama, PT Trio Kencana Abadi, CV akur motor", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Konten kamus", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Narasumber", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Reward", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Pengiriman Unit", "vendor": "", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Bongkar GC", "vendor": "PAN Express", "jenis_pajak": "23", "tarif": "0.02", "catatan": "Diambiln dari DPP difaktur pajak", "catatan2": ""}, {"transaksi": "Bonus Dealer", "vendor": "", "jenis_pajak": "23", "tarif": "0.15", "catatan": "karena dia termasuk hadiah", "catatan2": ""}, {"transaksi": "Hadiah Juara", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Expedisi Dokumen SAP", "vendor": "PT SATRIA ANTARA PRIMA", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Sewa Kendaraan", "vendor": "", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Banner Backdrop, Spanduk", "vendor": "", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Pelatihan", "vendor": "", "jenis_pajak": "21", "tarif": "2,5%,", "catatan": "", "catatan2": ""}, {"transaksi": "Pembayaran Claim C1 & C2", "vendor": "Lihat Jasa nya", "jenis_pajak": "23", "tarif": "0.02", "catatan": "Non PKP", "catatan2": "21"}, {"transaksi": "Pembayaran Claim C1 & C2", "vendor": "Kurniawan Tri Anggoro", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Pembayaran BI PODI GC HO", "vendor": "", "jenis_pajak": "21", "tarif": "2,5%,", "catatan": "", "catatan2": ""}, {"transaksi": "Iklan Ads Facebook & Instagram", "vendor": "", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya bongkar SHM", "vendor": "", "jenis_pajak": "21.23", "tarif": "", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Gaji Cleaning Services", "vendor": "PT Mitra Asri Pratama", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Matprom Exhibition", "vendor": "Handayani (DE21GN)", "jenis_pajak": "21", "tarif": "0.025", "catatan": "", "catatan2": ""}, {"transaksi": "Sewa Sound / Lighting", "vendor": "", "jenis_pajak": "23", "tarif": "2%,4%", "catatan": "", "catatan2": ""}, {"transaksi": "Bongkaran Exhibition & Loading Exhibition", "vendor": "Ahmad Sunar Fajri", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "PPh Plat Merah", "vendor": "Dari DPP", "jenis_pajak": "22", "tarif": "0.015", "catatan": "Rekapitulasi Tax TDM", "catatan2": ""}, {"transaksi": "Gaji security", "vendor": "Tribuana (Management Fee)", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Sewa Parkir", "vendor": "Lahan Parkir", "jenis_pajak": "4(2)", "tarif": "0.1", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Gaji Cleaning Services", "vendor": "Ahmad Saripufin", "jenis_pajak": "21", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya sewa ruko POS Fajar", "vendor": "Muhammad Remi", "jenis_pajak": "4(2)", "tarif": "0.1", "catatan": "", "catatan2": ""}, {"transaksi": "Prop pengajuan tools promosi preneur boost whatsapp", "vendor": "fitria maharani al rozi", "jenis_pajak": "21", "tarif": "2,5%,", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Legalitas", "vendor": "tarif menyesuaikan. Org pribadi/ badan", "jenis_pajak": "21.23", "tarif": "2,5% ,", "catatan": "", "catatan2": ""}, {"transaksi": "Pembayaran seminar & Training", "vendor": "tarif menyesuaikan. Org pribadi/ badan", "jenis_pajak": "21.23", "tarif": "2,5%,  , 2%", "catatan": "TANADI SANTOSO", "catatan2": ""}, {"transaksi": "Biaya ekspedisi matprom (pengiriman)", "vendor": "PT. PRATAMA KEBO MAS UTAMA", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Jasa Pengangkutan sepeda motor", "vendor": "PT TRANS BUANA MITRA ABADI", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Biaya Internet", "vendor": "Telkom, fiznet", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Pembayaran expedisi part claim c1 dan c2", "vendor": "Ahmad katuwi", "jenis_pajak": "21", "tarif": "0.025", "catatan": "", "catatan2": ""}, {"transaksi": "Kontributor artikel website tunas honda lampung", "vendor": "sahrul rozi", "jenis_pajak": "21", "tarif": "", "catatan": "", "catatan2": ""}, {"transaksi": "UMBUL-UMBUL", "vendor": "PT. JAYA ABADI MULIA", "jenis_pajak": "23", "tarif": "0.02", "catatan": "jasa 20% nilainya", "catatan2": ""}, {"transaksi": "QW", "vendor": "HL (NO NC)", "jenis_pajak": "21", "tarif": "0.025", "catatan": "", "catatan2": ""}, {"transaksi": "Izin K3", "vendor": "CV. RAHMAD JAYA (BAHARUDDIN SE)", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "KLAIM XP 1 B. DEVELOPMENT AHASS", "vendor": "", "jenis_pajak": "23", "tarif": "2", "catatan": "", "catatan2": ""}, {"transaksi": "TPS LIMBAH B3", "vendor": "MUH. THOHIRIN", "jenis_pajak": "21", "tarif": "", "catatan": "", "catatan2": ""}, {"transaksi": "konstruksi", "vendor": "cv. Maju makmur arta bangun sentosa, cv. Angkatan sepuluh", "jenis_pajak": "4(2)", "tarif": "0.0265", "catatan": "", "catatan2": ""}, {"transaksi": "Pembuatan ruang kasir", "vendor": "cv. Intana, cv. Nafiz jaya", "jenis_pajak": "4(2)", "tarif": "0.0265", "catatan": "", "catatan2": ""}, {"transaksi": "Pembuatan toilet gudang sutami", "vendor": "cv. Nafiz jaya", "jenis_pajak": "4(2)", "tarif": "0.0265", "catatan": "", "catatan2": ""}, {"transaksi": "Joint Promo", "vendor": "Astra", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Content tiktok", "vendor": "Astra", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Daprom", "vendor": "Astra", "jenis_pajak": "23", "tarif": "0.02", "catatan": "Lihat suppliernya", "catatan2": ""}, {"transaksi": "Roadshow", "vendor": "Astra", "jenis_pajak": "23", "tarif": "0.02", "catatan": "", "catatan2": ""}, {"transaksi": "Canvassing", "vendor": "Orang Pribadi", "jenis_pajak": "", "tarif": "2,5%", "catatan": "Lihat konteks/transaksinya", "catatan2": ""}];
+const KB_TRANSAKSI_NOPAJAK = [{"transaksi": "Pajak/retribusi/kas negara", "vendor": "", "ket": ""}, {"transaksi": "Transaksi TDM-TDM cabang", "vendor": "", "ket": ""}, {"transaksi": "Transaksi TDM-TDM cabang", "vendor": "", "ket": ""}, {"transaksi": "Reimburse Karyawan", "vendor": "", "ket": ""}, {"transaksi": "Asuransi", "vendor": "", "ket": ""}, {"transaksi": "Perjalanan Dinas", "vendor": "", "ket": ""}, {"transaksi": "Natura", "vendor": "", "ket": ""}, {"transaksi": "Pembelian Aset (PO)", "vendor": "", "ket": ""}, {"transaksi": "Pembelian Hadiah Giveaway", "vendor": "", "ket": ""}, {"transaksi": "STCK Biro jasa - Lihat Jasa nya terlebih dahulu", "vendor": "", "ket": ""}, {"transaksi": "Utang Klaim KPB Ke Cabang", "vendor": "", "ket": ""}, {"transaksi": "Bundling", "vendor": "", "ket": ""}, {"transaksi": "Disc Lock (No NC)", "vendor": "", "ket": ""}, {"transaksi": "Biaya CUG Admin", "vendor": "", "ket": ""}, {"transaksi": "Perpanjang KIR Kendaraan (Lihat Jasa Dulu)", "vendor": "", "ket": ""}, {"transaksi": "Sewa Kost", "vendor": "", "ket": ""}, {"transaksi": "Sewa Rumah Dinas", "vendor": "", "ket": ""}, {"transaksi": "Pembayaran bunga papan", "vendor": "", "ket": "HUT Mandiri Utama Finance"}, {"transaksi": "Pameran Cabang", "vendor": "", "ket": ""}, {"transaksi": "Indihome rumah dinas", "vendor": "", "ket": ""}, {"transaksi": "Rank 1-10", "vendor": "", "ket": ""}, {"transaksi": "Kompensasi SDM AHASS jaga TDM", "vendor": "", "ket": "Karena budget AHM"}, {"transaksi": "Voucher VE", "vendor": "", "ket": ""}, {"transaksi": "Pembayaran Claim C1 & C2 CABANG", "vendor": "", "ket": ""}, {"transaksi": "STCK", "vendor": "", "ket": ""}, {"transaksi": "Faktur Pengganti", "vendor": "", "ket": ""}, {"transaksi": "Penggantian Kompensasi program penjualan", "vendor": "karena jatuhnya reimburse", "ket": ""}, {"transaksi": "Biaya Akomodasi TUNTAS", "vendor": "", "ket": ""}, {"transaksi": "SUPPORT", "vendor": "", "ket": ""}, {"transaksi": "Izin UKL UPL dan izin Limbah B3", "vendor": "", "ket": ""}, {"transaksi": "Pembayaran reject KPB", "vendor": "", "ket": ""}, {"transaksi": "Tshirt", "vendor": "", "ket": ""}, {"transaksi": "Pengajuan Tools WABussiness DIGMAR", "vendor": "Kurniawan Tri Anggoro", "ket": ""}, {"transaksi": "izin lokasi", "vendor": "", "ket": ""}];
+const KB_PROGRAM = [{"program": "Bonus Dealer", "sub_program": "Bonus Dealer", "detail": "", "penjelasan": "Perhitungan bonus berdasarkan pencapaian pembelian unit oleh Dealer", "redaksional": "Bonus Dealer periode…", "pencapaian": "Ya", "aktivitas_jasa": "Tidak", "faktur_pajak": "Tidak", "tarif_pph": "0.15", "dasar_hukum": ""}, {"program": "Bonus Dealer", "sub_program": "Bonus Development", "detail": "", "penjelasan": "", "redaksional": "Bonus Dealer periode…", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "Tidak", "tarif_pph": "0.15", "dasar_hukum": ""}, {"program": "Bonus Dealer", "sub_program": "Bonus Tactical", "detail": "", "penjelasan": "", "redaksional": "Bonus Dealer periode…", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "Tidak", "tarif_pph": "0.15", "dasar_hukum": ""}, {"program": "Program XP", "sub_program": "XP1", "detail": "XP 1 - Development AHASS", "penjelasan": "Perhitungan klaim berdasarkan pencapaian service KPB oleh Dealer", "redaksional": "Klaim XP1 KPB Periode…", "pencapaian": "Ya", "aktivitas_jasa": "Ada", "faktur_pajak": "Ya", "tarif_pph": "0.02", "dasar_hukum": ""}, {"program": "Program XP", "sub_program": "XP1", "detail": "XP 1- Pengembalian ke Dealer", "penjelasan": "Perhitungan kalim berdasarkan penjualan unit oleh Dealer", "redaksional": "Klaim pengembalian program XP3 Periode", "pencapaian": "", "aktivitas_jasa": "Tidak", "faktur_pajak": "Tidak", "tarif_pph": "0.15", "dasar_hukum": ""}, {"program": "Program XP", "sub_program": "XP2", "detail": "Pengembalian ke Dealer type Beat Sporty", "penjelasan": "Perhitungan berdasarkan penjalan unit oleh Dealer", "redaksional": "Klaim pengembalian program XP2 Periode", "pencapaian": "Ya", "aktivitas_jasa": "Tidak", "faktur_pajak": "Tidak", "tarif_pph": "0.15", "dasar_hukum": ""}, {"program": "Program XP", "sub_program": "XP3", "detail": "Pengembalian ke Dealer All type", "penjelasan": "", "redaksional": "Klaim pengembalian program XP1 Periode", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Discount & Merchandise (DG)", "detail": "SCP (Sales Discount)", "penjelasan": "Klaim atas penggantian (kompensasi) discount sehubungan dengan Program penjualan yang dikeluarkan oleh AHM dan/atau MD", "redaksional": "Pergantian (Kompensasi) Program penjualan sales discount periode…", "pencapaian": "Tidak", "aktivitas_jasa": "Tidak", "faktur_pajak": "Tidak", "tarif_pph": "Tidak", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Discount & Merchandise (DG)", "detail": "Riding Tes", "penjelasan": "Klaim atas penggantian (kompensasi) riding test sehubungan dengan Program penjualan yang dikeluarkan oleh AHM dan/atau MD", "redaksional": "Pergantian (Kompensasi) Program penjualan riding test periode…", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Discount & Merchandise (DG)", "detail": "GC (Group Customer)", "penjelasan": "Klaim atas penggantian (kompensasi) group customer sehubungan dengan Program penjualan yang dikeluarkan oleh AHM dan/atau MD", "redaksional": "Pergantian (Kompensasi) Program penjualan group customer periode…", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Discount & Merchandise (DG)", "detail": "Program Direct Gift", "penjelasan": "Klaim atas penggantian (kompensasi) merchandise sehubungan dengan Program penjualan yang dikeluarkan oleh AHM dan/atau MD", "redaksional": "Pergantian (Kompensasi) Program penjualan merchandise periode…", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Klaim Program Aktivitas Dealer", "detail": "Pameran", "penjelasan": "Klaim  atas kegiatan pameran atau road show oleh dealer", "redaksional": "Klaim kegiatan roadshow periode…", "pencapaian": "Tidak", "aktivitas_jasa": "Ya", "faktur_pajak": "Ya", "tarif_pph": "0.02", "dasar_hukum": ""}, {"program": "Sales Program", "sub_program": "Klaim Program Aktivitas Dealer", "detail": "Activity Dealer", "penjelasan": "", "redaksional": "", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Insentif", "sub_program": "Insentif Program MD", "detail": "Insentif Sales", "penjelasan": "Bonus/Insentif atas pencapaian yang dibayarkan langsung", "redaksional": "Insentif penjualan unit xxx periode…", "pencapaian": "Ya", "aktivitas_jasa": "Tidak", "faktur_pajak": "Tidak", "tarif_pph": "?", "dasar_hukum": ""}, {"program": "Insentif", "sub_program": "Insentif Program MD", "detail": "Insentif PIC (Kacab)", "penjelasan": "", "redaksional": "", "pencapaian": "", "aktivitas_jasa": "", "faktur_pajak": "", "tarif_pph": "", "dasar_hukum": ""}, {"program": "Insentif", "sub_program": "KPB Reguler", "detail": "Penggantian klaim KPB AHASS", "penjelasan": "Pergantian atas kegiatan service yang dilakukan oleh Dealer", "redaksional": "Klaim KPB Periode…", "pencapaian": "Tidak", "aktivitas_jasa": "Ya", "faktur_pajak": "Ya", "tarif_pph": "?", "dasar_hukum": ""}];
+const KB_COA_RUTIN = [{"kategori": "OPEX SALARY", "listing": "BIAYA GAJI CLEANING SERVICE", "contoh": "", "account": "60020902", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Kemungkinan besar ini fee ke perusahaan/vendor outsourcing cleaning service (bukan gaji karyawan tetap TDM) — jasa dari pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI CRM", "contoh": "", "account": "60019901", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI JEDA ADMIN", "contoh": "", "account": "60019902", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI JEDA MARKETING", "contoh": "", "account": "60019901", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI MAGANG ADMIN BACKOFFICE", "contoh": "", "account": "60019902", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI MAGANG ADMIN WS", "contoh": "", "account": "60019904", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA HONOR MAGANG MEKANIK", "contoh": "", "account": "51119909", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Honor ke anak magang biasanya diperlakukan sebagai honorarium (PPh 21), bukan gaji tetap ber-NPWP payroll penuh."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI MAGANG MARKETING", "contoh": "", "account": "60019901", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA GAJI SECURITY", "contoh": "", "account": "60160501", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Umumnya gaji security dibayarkan lewat vendor outsourcing keamanan (mis. perusahaan security), bukan karyawan tetap TDM — jasa pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA INCENTIVE ADMIN", "contoh": "", "account": "60019902", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA INCENTIVE MEKANIK", "contoh": "", "account": "51119909", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA INCENTIVE OTHERS", "contoh": "", "account": "60019901", "klasifikasi": "Gaji/Insentif Karyawan — KONDISIONAL (Gabungan=Bukan Objek, Perorangan=PPh 21)", "alasan": "Tergantung cara pembayarannya: Kalau ini PEMBAYARAN GABUNGAN/BATCH untuk banyak karyawan sekaligus (redaksional biasanya \"Supplier: Umum\", bukan nama orang tertentu) — TIDAK perlu dipotong/gross-up di titik ini, karena nanti akan dipotong otomatis lewat mekanisme payroll PPh 21 bulanan (TER) oleh Tim Payroll. TAPI kalau ini PEMBAYARAN UNTUK 1 ORANG SAJA (di luar batch payroll rutin, mis. karyawan baru/magang yang diproses terpisah) — harus LANGSUNG dipotong PPh 21 saat itu juga, diperlakukan seperti honor/jasa perorangan. Default asumsi di sini: GABUNGAN (bukan objek). Sebutkan \"1 orang\"/\"perorangan\" di pertanyaan kalau yang dimaksud pembayaran individual, supaya dihitung PPh 21-nya."}, {"kategori": "OPEX SALARY", "listing": "BIAYA INCENTIVE SALES PARTNER", "contoh": "", "account": "60019901", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "\"Partner\" mengindikasikan mitra/sales lepas (bukan karyawan tetap) — honor ke pihak luar, PPh 21 jika perorangan."}, {"kategori": "OPEX SALARY", "listing": "BIAYA MANAGEMENT FEE CLEANING SERVICE", "contoh": "", "account": "60020902", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Management fee ke vendor outsourcing cleaning service — jelas jasa pihak ketiga (biasanya Badan Usaha, PPh 23 2%)."}, {"kategori": "OPEX SALARY", "listing": "BIAYA MANAGEMENT FEE SECURITY", "contoh": "", "account": "60160501", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Management fee ke vendor outsourcing security — jasa pihak ketiga (biasanya Badan Usaha, PPh 23 2%)."}, {"kategori": "OPEX SALARY", "listing": "BIAYA SERAGAM ADMIN SR", "contoh": "", "account": "60010802", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA SERAGAM ADMIN WS", "contoh": "", "account": "60010804", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA SERAGAM MARKETING", "contoh": "", "account": "60010801", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA SERAGAM MEKANIK", "contoh": "", "account": "60010803", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG BENSIN PARTNER", "contoh": "", "account": "60019901", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti di atas — untuk mitra/sales partner (bukan karyawan tetap), berpotensi objek PPh 21 sebagai honor, bukan reimburse karyawan biasa."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG PISAH KARYAWAN ADMIN SR", "contoh": "", "account": "60010402", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG PISAH KARYAWAN ADMIN WS", "contoh": "", "account": "60010404", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG PISAH KARYAWAN MARKETING", "contoh": "", "account": "60010401", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG PISAH KARYAWAN MEKANIK", "contoh": "", "account": "60010403", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX SALARY", "listing": "BIAYA UANG PISAH KARYAWAN MARKETING PART", "contoh": "", "account": "60010403", "klasifikasi": "Gaji/Insentif Karyawan Internal (PPh 21 Payroll — bukan skema potong vendor)", "alasan": "Gaji/insentif/seragam/uang pisah untuk karyawan tetap TDM sendiri — pemotongan PPh 21 lewat payroll bulanan (TER), bukan skema potong vendor pihak ketiga."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN GEDUNG SR", "contoh": "cat, kuas, amplas", "account": "60020101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Contoh yang tercantum (cat, kuas, amplas) menunjukkan ini pembelian material, bukan jasa tukang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN GEDUNG SR", "contoh": "", "account": "60020101", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit tertulis \"JASA\" — upah tukang/kontraktor perbaikan gedung."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN GEDUNG WS", "contoh": "", "account": "60020103", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Tidak ada contoh rincian — bisa berupa material atau gabungan jasa+material. Cek nota/kwitansi sebelum menentukan."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN GEDUNG WS", "contoh": "", "account": "60020103", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit tertulis \"JASA\"."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN AC SR", "contoh": "", "account": "60020202", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "\"Perbaikan/service AC\" pada dasarnya adalah ongkos jasa teknisi, bukan pembelian barang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN AC WS", "contoh": "", "account": "60020204", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti di atas — jasa servis AC."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA SERVICE KENDARAAN", "contoh": "RIDING TEST / DELIVERY", "account": "60020401", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Untuk baris \"Biaya Rutin\" contohnya RIDING TEST/DELIVERY → itu BBM operasional (Bukan Objek). Untuk baris Petty Cash (kode sama tapi tanpa contoh itu) → kemungkinan jasa servis bengkel beneran. Cek redaksional kwitansi."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA SERVICE KENDARAAN", "contoh": "", "account": "60020401", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\" — ongkos bengkel/service kendaraan."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN KOMPUTER SR", "contoh": "KOMPUTER / LAPTOP / HARDWARE / SOFTWARE", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "\"Perbaikan komputer\" = ongkos jasa teknisi IT; contoh (hardware/software) menjelaskan objek yang diperbaiki, bukan berarti beli barang baru."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN KOMPUTER SR", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\"."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN KOMPUTER WS", "contoh": "KOMPUTER / LAPTOP / HARDWARE / SOFTWARE", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti versi SR — jasa teknisi IT."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN KOMPUTER WS", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\"."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN PRINTER SR", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa servis printer."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN PRINTER SR", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\"."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN PRINTER WS", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa servis printer."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA JASA PERBAIKAN PRINTER WS", "contoh": "", "account": "60020301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\"."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN DALAM KOTA MARKETING", "contoh": "PD", "account": "60030101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN DALAM KOTA ADMIN SR", "contoh": "", "account": "60030102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN DALAM KOTA MEKANIK", "contoh": "", "account": "60030103", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN DALAM KOTA ADMIN WS", "contoh": "", "account": "60030104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN LUAR KOTA MARKETING", "contoh": "transport, antigen", "account": "60030201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "UANG SAKU", "contoh": "", "account": "600304", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN LUAR KOTA ADMIN SR", "contoh": "", "account": "60030202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN LUAR KOTA MEKANIK", "contoh": "", "account": "60030203", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PERDIN LUAR KOTA ADMIN WS", "contoh": "", "account": "60030204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA PEMBELIAN ATK SR", "contoh": "", "account": "60040102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (alat tulis kantor)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA PEMBELIAN ATK WS", "contoh": "", "account": "60040104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA PEMBELIAN CATRIDGE / TONER SR", "contoh": "", "account": "60040202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (catridge/toner baru)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA PEMBELIAN CATRIDGE / TONER WS", "contoh": "", "account": "60040203", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA CETAKAN SR", "contoh": "", "account": "60040302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cetak/percetakan (banner, brosur, dll dicetak oleh vendor percetakan)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA CETAKAN WS", "contoh": "", "account": "60040304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cetak/percetakan."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA GUDANG", "contoh": "", "account": "60050101", "klasifikasi": "Sewa Tanah/Bangunan (PPh 4(2) = 10% FINAL)", "alasan": "Gudang = bangunan."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA RUKO", "contoh": "", "account": "60050101", "klasifikasi": "Sewa Tanah/Bangunan (PPh 4(2) = 10% FINAL)", "alasan": "Ruko = bangunan."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA KENDARAAN DELIVERY", "contoh": "Tagihan Sewa Kendaraan", "account": "60050501", "klasifikasi": "Sewa Selain Tanah/Bangunan (PPh 23 = 2%)", "alasan": "Kendaraan = barang bergerak, bukan tanah/bangunan."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA RUMAH KARYAWAN MARKETING", "contoh": "", "account": "60059901", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Meski objeknya rumah/bangunan, ini adalah tunjangan/fasilitas perumahan untuk KARYAWAN SENDIRI — TDM membayar/mereimburse ke karyawan (atau karyawan yang kontrak langsung dengan pemilik), bukan TDM yang berkontrak & membayar langsung ke pemilik tanah/bangunan. Karena bukan TDM yang menjadi pihak penyewa langsung ke pemilik, kewajiban potong PPh 4(2) tidak melekat di sisi TDM. Kalaupun ada unsur pajak, itu masuk PPh 21 payroll karyawan (sebagai tunjangan/komponen gaji), bukan skema pemotongan sewa ke vendor pihak ketiga. ⚠️ Catatan: kalau ternyata TDM yang berkontrak & bayar LANGSUNG ke pemilik rumah/kost (bukan reimburse ke karyawan), maka tetap wajib potong PPh 4(2) 10% seperti sewa tanah/bangunan lainnya — cek dulu redaksional kwitansi/kontraknya."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA RUMAH KARYAWAN ADMIN SR", "contoh": "", "account": "60059902", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Meski objeknya rumah/bangunan, ini adalah tunjangan/fasilitas perumahan untuk KARYAWAN SENDIRI — TDM membayar/mereimburse ke karyawan (atau karyawan yang kontrak langsung dengan pemilik), bukan TDM yang berkontrak & membayar langsung ke pemilik tanah/bangunan. Karena bukan TDM yang menjadi pihak penyewa langsung ke pemilik, kewajiban potong PPh 4(2) tidak melekat di sisi TDM. Kalaupun ada unsur pajak, itu masuk PPh 21 payroll karyawan (sebagai tunjangan/komponen gaji), bukan skema pemotongan sewa ke vendor pihak ketiga. ⚠️ Catatan: kalau ternyata TDM yang berkontrak & bayar LANGSUNG ke pemilik rumah/kost (bukan reimburse ke karyawan), maka tetap wajib potong PPh 4(2) 10% seperti sewa tanah/bangunan lainnya — cek dulu redaksional kwitansi/kontraknya."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA RUMAH KARYAWAN MEKANIK", "contoh": "", "account": "60059903", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Meski objeknya rumah/bangunan, ini adalah tunjangan/fasilitas perumahan untuk KARYAWAN SENDIRI — TDM membayar/mereimburse ke karyawan (atau karyawan yang kontrak langsung dengan pemilik), bukan TDM yang berkontrak & membayar langsung ke pemilik tanah/bangunan. Karena bukan TDM yang menjadi pihak penyewa langsung ke pemilik, kewajiban potong PPh 4(2) tidak melekat di sisi TDM. Kalaupun ada unsur pajak, itu masuk PPh 21 payroll karyawan (sebagai tunjangan/komponen gaji), bukan skema pemotongan sewa ke vendor pihak ketiga. ⚠️ Catatan: kalau ternyata TDM yang berkontrak & bayar LANGSUNG ke pemilik rumah/kost (bukan reimburse ke karyawan), maka tetap wajib potong PPh 4(2) 10% seperti sewa tanah/bangunan lainnya — cek dulu redaksional kwitansi/kontraknya."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA RUMAH KARYAWAN ADMIN WS", "contoh": "", "account": "60059904", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Meski objeknya rumah/bangunan, ini adalah tunjangan/fasilitas perumahan untuk KARYAWAN SENDIRI — TDM membayar/mereimburse ke karyawan (atau karyawan yang kontrak langsung dengan pemilik), bukan TDM yang berkontrak & membayar langsung ke pemilik tanah/bangunan. Karena bukan TDM yang menjadi pihak penyewa langsung ke pemilik, kewajiban potong PPh 4(2) tidak melekat di sisi TDM. Kalaupun ada unsur pajak, itu masuk PPh 21 payroll karyawan (sebagai tunjangan/komponen gaji), bukan skema pemotongan sewa ke vendor pihak ketiga. ⚠️ Catatan: kalau ternyata TDM yang berkontrak & bayar LANGSUNG ke pemilik rumah/kost (bukan reimburse ke karyawan), maka tetap wajib potong PPh 4(2) 10% seperti sewa tanah/bangunan lainnya — cek dulu redaksional kwitansi/kontraknya."}, {"kategori": "OPEX RENT", "listing": "BIAYA SEWA LAINNYA", "contoh": "", "account": "60059902", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Terlalu umum — tergantung objek yang disewa (tanah/bangunan → 4(2), selain itu → PPh 23 2%)."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TELEPHONE MARKETING", "contoh": "", "account": "60060101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TELEPHONE ADMIN SR", "contoh": "", "account": "60060102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TELEPHONE ADMIN WS", "contoh": "", "account": "60060104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA INTERNET SR", "contoh": "", "account": "60060202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA INTERNET WS", "contoh": "", "account": "60060204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA CUG MARKETING", "contoh": "", "account": "60060501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA CUG ADMIN", "contoh": "", "account": "60060502", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA LISTRIK SR", "contoh": "", "account": "60070102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA LISTRIK WS", "contoh": "", "account": "60070104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA AIR SR", "contoh": "", "account": "60070202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA AIR WS", "contoh": "", "account": "60070204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA BAHAN BAKAR GENSET", "contoh": "", "account": "60070302", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA RECRUITMENT", "contoh": "", "account": "60090102", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa agency/headhunter rekrutmen (atau porsi jasa media iklan loker)."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA TRAINING MARKETING", "contoh": "", "account": "60090201", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa trainer/lembaga pelatihan."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA TRAINING ADMIN SR", "contoh": "", "account": "60090202", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa trainer/lembaga pelatihan."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA TRAINING MEKANIK", "contoh": "", "account": "60090203", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa trainer/lembaga pelatihan."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA TRAINING ADMIN WS", "contoh": "", "account": "60090204", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa trainer/lembaga pelatihan."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PBB", "contoh": "", "account": "60100101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pajak Bumi & Bangunan — pajak resmi ke negara, bukan jasa vendor."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PERPANJANGAN PAJAK STNK", "contoh": "", "account": "60100202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pajak kendaraan resmi ke Samsat. Kalau pakai jasa biro/calo, porsi jasa biro itu sendiri bisa kena PPh 21 — catat terpisah."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA IZIN KENDARAAN", "contoh": "", "account": "60100202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi/izin resmi."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA MATERAI", "contoh": "", "account": "60100302", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Bea meterai, bukan jasa."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA EXPEDISI DOCUMENT", "contoh": "SAP, TIKI, JNE, KGP, REX", "account": "60100302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ekspedisi/kurir dokumen (SAP, TIKI, JNE dll — umumnya Badan Usaha, PPh 23 2%)."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA EXPEDISI TOOLS", "contoh": "", "account": "60100304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ekspedisi."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PAJAK REKLAME", "contoh": "", "account": "60100501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pajak daerah resmi."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PERIZINAN", "contoh": "", "account": "60100601", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi/izin resmi pemerintah. Kalau pakai jasa konsultan perizinan, porsi jasanya kena PPh 21/23 — catat terpisah."}, {"kategori": "OPEX PROFESIONAL FEE", "listing": "BIAYA EFILLING", "contoh": "", "account": "60120202", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa konsultan pajak/efiling."}, {"kategori": "OPEX PROFESIONAL FEE", "listing": "BIAYA APPRAISAL", "contoh": "", "account": "60120502", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa penilai (appraisal)."}, {"kategori": "OPEX PROFESIONAL FEE", "listing": "BIAYA ACTUARIA", "contoh": "", "account": "60120502", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa aktuaris."}, {"kategori": "OPEX PROFESIONAL FEE", "listing": "BIAYA JASA", "contoh": "iter, TUKANG", "account": "60129902", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Eksplisit \"JASA\" — contoh: tukang (PPh 21 kalau perorangan)."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA IKLAN", "contoh": "", "account": "60140101", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa iklan/media/agency (atau influencer perorangan → PPh 21)."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA CETAK", "contoh": "banner, matprom", "account": "60140301", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cetak (banner, matprom)."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA PAMERAN", "contoh": "", "account": "60140201", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Bisa gabungan sewa tempat + jasa EO + sewa booth — sebaiknya dipecah per komponen biaya."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA SEWA TEMPAT", "contoh": "", "account": "60140201", "klasifikasi": "Sewa Tanah/Bangunan (PPh 4(2) = 10% FINAL)", "alasan": "Tempat/venue = bangunan."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA LAINNYA PROMOSI", "contoh": "", "account": "60140201", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Nama akun terlalu umum untuk diklasifikasi otomatis."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA MC", "contoh": "", "account": "60140201", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa MC — hampir selalu perorangan (PPh 21 ≈2,5%)."}, {"kategori": "OPEX ADVERTISING & PROMOTION", "listing": "BIAYA ROADSHOW", "contoh": "", "account": "60140201", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa event organizer/roadshow."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA POLREG", "contoh": "", "account": "60160101", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Redaksional kurang familiar (kemungkinan retribusi terkait registrasi polisi) — cek konteks transaksinya."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA SUMBANGAN", "contoh": "", "account": "60160201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Donasi/sumbangan, bukan jasa atau sewa."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA JAMUAN", "contoh": "", "account": "60160301", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Kalau sekadar beli makanan/snack → Bukan Objek. Kalau kontrak catering formal dengan vendor → Jasa (PPh 23 2% jika Badan)."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA KONSUMSI KONSUMEN SR", "contoh": "", "account": "60160301", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Sama seperti Jamuan — tergantung apakah lewat vendor catering formal atau beli langsung."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA KONSUMSI KONSUMEN WS", "contoh": "", "account": "60160303", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Sama seperti di atas."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA RETRIBUSI", "contoh": "", "account": "60160201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi resmi pemerintah daerah."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA BUKA PUASA", "contoh": "", "account": "60160602", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Tergantung apakah sewa venue/catering vendor (Jasa/Sewa) atau cuma beli makanan (Bukan Objek)."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA GATHERING", "contoh": "", "account": "60160602", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Event gathering biasanya gabungan sewa venue + jasa EO/catering — sebaiknya dipecah per komponen."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA REWARD SR MARKETING", "contoh": "", "account": "60160701", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Termasuk kategori Reward/Hadiah — kalau ke karyawan sendiri biasanya digabung payroll PPh 21; kalau ke pihak luar ikut aturan reward OP (PPh21 2,5%) / Badan (PPh23 15%)."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA REWARD SR ADMIN", "contoh": "", "account": "60160702", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti di atas — kategori Reward/Hadiah."}, {"kategori": "OPEX OFFICE", "listing": "BIAYA REWARD WS MEKANIK", "contoh": "", "account": "60160703", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti di atas — kategori Reward/Hadiah."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BUNDLING", "contoh": "", "account": "51119908", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Nama akun terlalu umum (bisa barang bonus bundling, bukan jasa)."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA CEK FISIK R2", "contoh": "", "account": "51119908", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Kalau cek fisik resmi ke Samsat → Bukan Objek. Kalau pakai jasa vendor swasta → Jasa."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA KBM", "contoh": "Kuli Bongkar Muat, biaya turun unit", "account": "51119908", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Kuli Bongkar Muat — upah buruh lepas/jasa ikat, umumnya PPh 21 (upah harian/borongan)."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA KLAIM", "contoh": "", "account": "51119908", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Klaim garansi/reimburse, bukan jasa."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA ONGKOS ANGKUT SPAREPART OIL", "contoh": "", "account": "51111501", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa angkut/ekspedisi."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA ONGKOS ANGKUT UNIT", "contoh": "", "account": "51111501", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa angkut/ekspedisi unit."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA STCK", "contoh": "", "account": "51110102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "STCK = Surat Tanda Coba Kendaraan — retribusi/permit resmi (kemungkinan ke Samsat/Dishub), bukan jasa vendor. Konfirmasi kalau ada porsi jasa biro yang mengurusnya."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA TAGIHAN PERWIL", "contoh": "", "account": "51119908", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Nama akun terlalu umum untuk diklasifikasi otomatis."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA PENGIRIMAN UNIT (GC)", "contoh": "", "account": "51111501", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ekspedisi pengiriman unit."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA HONOR PIC BUNDLING", "contoh": "", "account": "51119908", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Honor ke PIC (perorangan) — PPh 21."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA ASURANSI STOCK", "contoh": "", "account": "51119908", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Premi asuransi ke perusahaan asuransi berizin OJK — dikecualikan dari objek PPh 23."}];
+const KB_COA_PETTY = [{"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA KIRIM PART", "contoh": "EXPEDISI MD, JNE, JNT, TIKI, SAP", "account": "51111502", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ekspedisi (MD, JNE, JNT, TIKI, SAP)."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT KEAMANAN SR", "contoh": "Gembok, Kunci, Rante Unit", "account": "60020201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (gembok, kunci, rantai)."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT LISTRIK SR", "contoh": "Bohlam, Kabel,", "account": "60020202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (bohlam, kabel)."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI MONEY DETECTOR", "contoh": "", "account": "60020202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian alat."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN MESIN AIR", "contoh": "", "account": "60020202", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Ongkos jasa teknisi perbaikan mesin air (tidak ada contoh pembelian barang)."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN PERALATAN KANTOR", "contoh": "Las Kursi, Beli Triplek, Perbaikan Kipas,", "account": "60020202", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Campuran: \"Las Kursi\" & \"Perbaikan Kipas\" = jasa, tapi \"Beli Triplek\" = barang. Pisahkan porsi jasa untuk pemotongan kalau nilainya material."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA SERVICE AC", "contoh": "Service, Isi Freon, Isi Apar", "account": "60020202", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Contoh: Service, Isi Freon, Isi Apar — semuanya jasa teknisi/isi ulang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT LISTRIK WS", "contoh": "", "account": "60020204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN KOMPUTER SR", "contoh": "Hardware, Software", "account": "60020302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "\"Perbaikan komputer\" = ongkos jasa teknisi IT; contoh (hardware/software) menjelaskan objek yang diperbaiki, bukan berarti beli barang baru."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN PRINTER SR", "contoh": "", "account": "60020302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa servis printer."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA ISI ULANG TINTA WS", "contoh": "Catridge, Pita", "account": "60020304", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "\"Isi ulang\" = jasa refill (objek PPh 21/23), tapi nilainya biasanya kecil/dianggap consumable — cek kebijakan internal soal nilai minimum pemotongan."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN KOMPUTER WS", "contoh": "Hardware, Software", "account": "60020304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Sama seperti versi SR — jasa teknisi IT."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN PRINTER WS", "contoh": "", "account": "60020304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa servis printer."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA CUCI STEAM", "contoh": "", "account": "60020401", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cuci kendaraan."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA SERVICE KENDARAAN", "contoh": "", "account": "60020401", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Untuk baris \"Biaya Rutin\" contohnya RIDING TEST/DELIVERY → itu BBM operasional (Bukan Objek). Untuk baris Petty Cash (kode sama tapi tanpa contoh itu) → kemungkinan jasa servis bengkel beneran. Cek redaksional kwitansi."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA TAMBAL BAN", "contoh": "", "account": "60020401", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa tambal ban."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT KOMPUTER", "contoh": "Flashdisk, Kabel VGA, HDMI, HARDISK, DLL", "account": "60020402", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (flashdisk, kabel, hardisk, dll)."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BIAYA PERBAIKAN HANDPHONE", "contoh": "", "account": "60020502", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa servis HP."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA BBM MEETING MARKETING", "contoh": "Meeting Dalam Kota, Travel, OJOL, Stock Opname, Antar Tagihan, Bensin Ke Bank", "account": "60030101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BELI BBM KENDARAAN MESSENGER", "contoh": "Bensin Ke Tiki, Ke Pasar,", "account": "60030102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA BBM MEETING ADMIN", "contoh": "Meeting Dalam Kota, Travel, OJOL, Stock Opname, Antar Tagihan, Bensin Ke Bank", "account": "60030102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA BBM RIDING TEST", "contoh": "", "account": "60030102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA TOL", "contoh": "", "account": "60030102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "UANG SAKU DALAM KOTA", "contoh": "", "account": "600303", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "UANG SAKU LUAR KOTA", "contoh": "", "account": "600304", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse biaya operasional perjalanan dinas karyawan sendiri (BBM, tol, uang saku) — bukan pembayaran ke vendor jasa/sewa."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "SEWA KOS/KONTRAK RUMAH KARYAWAN", "contoh": "", "account": "600509", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Meski objeknya rumah/bangunan, ini adalah tunjangan/fasilitas perumahan untuk KARYAWAN SENDIRI — TDM membayar/mereimburse ke karyawan (atau karyawan yang kontrak langsung dengan pemilik), bukan TDM yang berkontrak & membayar langsung ke pemilik tanah/bangunan. Karena bukan TDM yang menjadi pihak penyewa langsung ke pemilik, kewajiban potong PPh 4(2) tidak melekat di sisi TDM. Kalaupun ada unsur pajak, itu masuk PPh 21 payroll karyawan (sebagai tunjangan/komponen gaji), bukan skema pemotongan sewa ke vendor pihak ketiga. ⚠️ Catatan: kalau ternyata TDM yang berkontrak & bayar LANGSUNG ke pemilik rumah/kost (bukan reimburse ke karyawan), maka tetap wajib potong PPh 4(2) 10% seperti sewa tanah/bangunan lainnya — cek dulu redaksional kwitansi/kontraknya."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI ALAT TULIS SR", "contoh": "Pulpen, Pensil, Tipex, Penghapus dll", "account": "60040102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Mengandung kata \"Beli/Pembelian\" — pembelian barang, bukan jasa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI ATK", "contoh": "Straples, Lem Kertas, Klip Kertas, Binder Klip, Lakban, Map, Amplop dll", "account": "60040102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Mengandung kata \"Beli/Pembelian\" — pembelian barang, bukan jasa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI KERTAS SR", "contoh": "Kertas 3 ply, HVS, dll", "account": "60040102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Mengandung kata \"Beli/Pembelian\" — pembelian barang, bukan jasa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI ALAT TULIS WS", "contoh": "", "account": "60040104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Mengandung kata \"Beli/Pembelian\" — pembelian barang, bukan jasa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI KERTAS WS", "contoh": "", "account": "60040104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Mengandung kata \"Beli/Pembelian\" — pembelian barang, bukan jasa."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA ISI ULANG TINTA SR", "contoh": "Catridge, Pita, Isi Ulang Tinta, Toner", "account": "60040202", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Jasa refill tinta, tapi nilainya kecil — cek kebijakan minimum pemotongan."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA ISI ULANG TINTA WS", "contoh": "Catridge, Pita, Isi Ulang Tinta, Toner", "account": "60040204", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Sama seperti di atas."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA CETAKAN SR", "contoh": "Banner, Price list, Brosur, Spanduk", "account": "60040302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cetak/percetakan (banner, brosur, dll dicetak oleh vendor percetakan)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA FOTO COPY SR", "contoh": "", "account": "60040302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa fotokopi (walau umumnya nominal kecil)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA LAMINATING", "contoh": "", "account": "60040302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa laminating."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA CETAKAN WS", "contoh": "Banner, Price list, Brosur, Spanduk", "account": "60040304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cetak/percetakan."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BIAYA FOTO COPY WS", "contoh": "", "account": "60040304", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa fotokopi."}, {"kategori": "OPEX SEWA", "listing": "BIAYA SEWA", "contoh": "Sewa Kursi, Sound System", "account": "60059901", "klasifikasi": "Sewa Selain Tanah/Bangunan (PPh 23 = 2%)", "alasan": "Contoh: Sewa Kursi, Sound System — barang bergerak, bukan tanah/bangunan."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BELI PULSA ADMIN SR", "contoh": "Pulsa Paket data", "account": "60060102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian pulsa/kartu perdana — barang, bukan jasa."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BELI PULSA MARKETING", "contoh": "Pulsa Paket data, Pulsa CRM, Pulsa Verifikator", "account": "60060102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian pulsa/kartu perdana — barang, bukan jasa."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TAGIHAN TELEPHONE SR", "contoh": "", "account": "60060102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BELI PULSA ADMIN WS", "contoh": "Pulsa Paket data", "account": "60060104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian pulsa/kartu perdana — barang, bukan jasa."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TAGIHAN TELEPHONE WS", "contoh": "", "account": "60060104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BELI PERDANA MODEM SR", "contoh": "", "account": "60060202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian pulsa/kartu perdana — barang, bukan jasa."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TAGIHAN INTERNET SR", "contoh": "", "account": "60060202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BELI PERDANA MODEM WS", "contoh": "", "account": "60060204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian pulsa/kartu perdana — barang, bukan jasa."}, {"kategori": "OPEX TELEPHONE & INTERNET", "listing": "BIAYA TAGIHAN INTERNET WS", "contoh": "", "account": "60060204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke operator telekomunikasi resmi (Telkom/provider) — jasa telekomunikasi umum dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI TOKEN LISTRIK SR", "contoh": "", "account": "60070102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA TAGIHAN LISTRIK SR", "contoh": "", "account": "60070102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI TOKEN LISTRIK WS", "contoh": "", "account": "60070104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA TAGIHAN LISTRIK WS", "contoh": "", "account": "60070104", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI REFILL AIR GALON SR", "contoh": "", "account": "60070202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA TAGIHAN PDAM SR", "contoh": "", "account": "60070202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI REFILL AIR GALON WS", "contoh": "", "account": "60070204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BIAYA TAGIHAN PDAM WS", "contoh": "", "account": "60070204", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Tagihan ke PLN/PDAM (BUMN/BUMD penyedia utilitas) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI BBM GENSET SR", "contoh": "", "account": "60070302", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX ELECTRICITY & WATER", "listing": "BELI BBM GENSET WS", "contoh": "", "account": "60070304", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian token/isi ulang/BBM genset — barang, bukan jasa."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA PSIKOTEST SR MARKETING", "contoh": "", "account": "60090101", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa vendor psikotes/psikolog."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA IKLAN LOKER KORAN", "contoh": "", "account": "60090102", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa media (koran) pasang iklan lowongan."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA PSIKOTEST SR ADMIN", "contoh": "", "account": "60090102", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa vendor psikotes."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA PSIKOTEST WS MEKANIK", "contoh": "", "account": "60090103", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa vendor psikotes."}, {"kategori": "OPEX RECRUITMENT & TRAINING", "listing": "BIAYA PSIKOTEST WS ADMIN", "contoh": "", "account": "60090104", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa vendor psikotes."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PBB", "contoh": "", "account": "60100101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pajak Bumi & Bangunan — pajak resmi ke negara, bukan jasa vendor."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PERPANJANGAN KIR", "contoh": "", "account": "60100201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi resmi Dishub."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA PERPANJANGAN STNK", "contoh": "", "account": "60100201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pajak kendaraan resmi."}, {"kategori": "OPEX LEGAL", "listing": "BELI MATERAI", "contoh": "", "account": "60100302", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Bea meterai."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA KIRIM DOCUMENT", "contoh": "JNE, TIKI, SAP, JNT, KGP, POS , gosend", "account": "60100302", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ekspedisi/kurir dokumen."}, {"kategori": "OPEX LEGAL", "listing": "BIAYA IZIN LOKASI", "contoh": "", "account": "60100601", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi/izin resmi pemerintah daerah."}, {"kategori": "OPEX SALES", "listing": "BELI BBM KOMPRESOR", "contoh": "", "account": "60150103", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX SALES", "listing": "BELI KEBUTUHAN AHASS MEKANIK", "contoh": "Kain Majun, Sabun Colek, Lem, dll", "account": "60150103", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX SALES", "listing": "BELI KEBUTUHAN PDI SR", "contoh": "Beli Tali, Tambang, Triplek alas motor, Semir Ban, Pensil Esek - Esek, Baut, dll", "account": "60150103", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX SALES", "listing": "BELI BBM PDI", "contoh": "", "account": "51119908", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX SALES", "listing": "BIAYA PENGECETAN UNIT", "contoh": "", "account": "60150101", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa cat/tukang cat kendaraan."}, {"kategori": "OPEX SALES", "listing": "BIAYA KETOK PLAT", "contoh": "", "account": "60150101", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Jasa ketok body kendaraan."}, {"kategori": "OPEX SALES", "listing": "BIAYA BBM ANTAR UNIT KE KONSUMEN", "contoh": "", "account": "60150201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX SALES", "listing": "BIAYA BBM SERVICE KUNJUNG", "contoh": "", "account": "60150203", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang/BBM operasional bengkel & PDI."}, {"kategori": "OPEX PERJALANAN DINAS", "listing": "BIAYA PARKIR", "contoh": "", "account": "60030201", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi parkir harian/insidental, bukan kontrak sewa lahan parkir jangka panjang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT KEBERSIHAN SR", "contoh": "Beli Pewangi, Sabun, dll", "account": "60169902", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang (pewangi, sabun)."}, {"kategori": "OPEX STATIONARY & BRINDING", "listing": "BELI KARET", "contoh": "", "account": "60169902", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang."}, {"kategori": "OPEX REPAIR & MAINTENANCE", "listing": "BELI ALAT KEBERSIHAN WS", "contoh": "Beli Pewangi, Sabun, dll", "account": "60169904", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Pembelian barang."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA RETRIBUSI", "contoh": "", "account": "60160202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Retribusi resmi."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA SUMBANGAN", "contoh": "", "account": "60160202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Donasi/sumbangan."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA LANGGANAN TV", "contoh": "", "account": "60160202", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Langganan TV kabel/streaming — serupa telekomunikasi, umumnya dikecualikan."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA TOL", "contoh": "", "account": "60030101", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Reimburse tol."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA JAMUAN KONSUMEN SR", "contoh": "", "account": "60160301", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Tergantung apakah lewat vendor catering formal atau beli langsung."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA JAMUAN KONSUMEN WS", "contoh": "", "account": "60160303", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Sama seperti di atas."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA KONSUMSI KARYAWAN", "contoh": "", "account": "60160302", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Umumnya pembelian makanan langsung untuk konsumsi internal karyawan, bukan kontrak jasa catering — bukan objek pemotongan."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA LANGGANAN KORAN SR", "contoh": "Koran Atau Majalah", "account": "60160401", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Langganan media cetak — pembelian produk, bukan jasa withholding."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA LANGGANAN KORAN WS", "contoh": "Koran Atau Majalah", "account": "60160403", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Sama seperti di atas."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA IURAN KEAMANAN", "contoh": "Siskamling, Jaga malam, Babinsa, Pemuda Pancasila, Jatah Reman :)", "account": "60160501", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Iuran ke masyarakat/ormas setempat (Siskamling, Babinsa, dll) — sifatnya informal/sumbangan lingkungan, biasanya tanpa bukti potong formal. Secara ketat aturan bisa dianggap jasa keamanan perorangan (PPh 21), tapi dalam praktik umum sering diperlakukan sebagai iuran/sumbangan (Bukan Objek). Konfirmasi kebijakan internal."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA LAINNYA SR", "contoh": "", "account": "60169901", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Kategori \"lainnya\" terlalu umum untuk diklasifikasi otomatis."}, {"kategori": "OPEX OFFICE OTHERS", "listing": "BIAYA LAINNYA WS", "contoh": "", "account": "60169903", "klasifikasi": "Perlu Dicek Manual (redaksional kurang jelas / bisa campuran)", "alasan": "Sama seperti di atas."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM MUTASI UNIT", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM MUTASI PART", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111502", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM AMBIL UNIT", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM ANTAR UNIT", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA KBM", "contoh": "Kuli Bongkar Muat, Jasa Ikat", "account": "51119908", "klasifikasi": "Jasa (PPh 21/23 — tergantung status vendor)", "alasan": "Kuli Bongkar Muat — upah buruh lepas/jasa ikat, umumnya PPh 21 (upah harian/borongan)."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM AMBIL PART", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111502", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM ANTAR PART", "contoh": "Dari / Ke Pos, Gudang, atau MD", "account": "51111502", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "HPP SUPPORT PENJUALAN", "listing": "BIAYA BBM KANVASING UNIT", "contoh": "", "account": "51111501", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "BBM operasional."}, {"kategori": "OIOE", "listing": "Biaya Admin Bank In", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OIOE", "listing": "Biaya Admin Bank Out", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OIOE", "listing": "Biaya Pembelian Cek", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OIOE", "listing": "Biaya Transfer", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OIOE", "listing": "Biaya Setoran Bank", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "OIOE", "listing": "Surat Konfirmasi Audit", "contoh": "", "account": "812102", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Biaya administrasi perbankan (admin/transfer/setoran) — dikecualikan dari objek pemotongan PPh 23."}, {"kategori": "", "listing": "BIAYA LAINNYA WORKSHOP", "contoh": "DENDA KPB", "account": "89919902", "klasifikasi": "Bukan Objek Pemotongan (Barang/Reimburse/Pajak Resmi)", "alasan": "Contoh: DENDA KPB — ini denda/penalti, bukan jasa atau sewa."}];
+
+// ══════════════════════════════════════════
+//  TANYA PAJAK — CHATBOT MODULE
+//  Menjawab dari data INPUT PINTAR (Transaksi Rutin, Program TDM, COA 2022),
+//  fallback ke Glosarium, dan eskalasi ke CS (Google Sheets) bila tak ditemukan.
+// ══════════════════════════════════════════
+
+/* ── 1. KONFIGURASI ─────────────────────────
+   Isi URL Web App Apps Script setelah deploy (lihat panduan CHATBOT_SETUP.md).
+   Contoh: "https://script.google.com/macros/s/AKfycb.../exec"
+*/
+const CS_SCRIPT_URL = ""; // ⚠️ WAJIB DIISI sebelum fitur "Tanya CS" berfungsi
+
+/* ── 2. STOPWORDS & UTIL ───────────────────── */
+const CB_STOPWORDS = new Set(['apa','apakah','itu','yang','untuk','dengan','dan','atau','ke','kalo','kalau',
+  'jika','ada','pada','oleh','akan','bisa','tentang','soal','dari','di','ini','adalah','nya','berapa',
+  'berapakah','kena','dikenakan','saya','mau','tolong','gimana','bagaimana','dong','sih','ya','yaa','min',
+  'gan','kak','dok','nih','deh','the','a','an','is','are','for','of','to','in','on',
+  'tidak','bukan','belum','sudah','udah','harus','perlu','boleh','saja','lagi','masih','pernah','ga','gak','nggak'
+]);
+
+function cbNorm(s) {
+  return (s || '').toString().toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+function cbTokens(s) {
+  return cbNorm(s).split(' ').filter(t => t.length >= 2 && !CB_STOPWORDS.has(t));
+}
+
+/* ── 3. BANGUN INDEKS PENCARIAN ─────────────
+   Setiap entri KB diubah jadi { type, text (utk index), data, render() } */
+function cbBuildIndex() {
+  const idx = [];
+
+  (typeof KB_TRANSAKSI_PAJAK !== 'undefined' ? KB_TRANSAKSI_PAJAK : []).forEach(d => {
+    idx.push({
+      type: 'pajak',
+      text: [d.transaksi, d.vendor, d.jenis_pajak, d.catatan, d.catatan2].join(' '),
+      main: d.transaksi,
+      data: d
+    });
+  });
+
+  (typeof KB_TRANSAKSI_NOPAJAK !== 'undefined' ? KB_TRANSAKSI_NOPAJAK : []).forEach(d => {
+    idx.push({
+      type: 'nopajak',
+      text: [d.transaksi, d.vendor, d.ket].join(' '),
+      main: d.transaksi,
+      data: d
+    });
+  });
+
+  (typeof KB_PROGRAM !== 'undefined' ? KB_PROGRAM : []).forEach(d => {
+    idx.push({
+      type: 'program',
+      text: [d.program, d.sub_program, d.detail, d.penjelasan, d.redaksional].join(' '),
+      main: d.detail || d.sub_program || d.program,
+      data: d
+    });
+  });
+
+  (typeof KB_COA_RUTIN !== 'undefined' ? KB_COA_RUTIN : []).forEach(d => {
+    idx.push({
+      type: 'coa_rutin',
+      text: [d.kategori, d.listing, d.contoh, d.account].join(' '),
+      main: d.listing,
+      data: d
+    });
+  });
+
+  (typeof KB_COA_PETTY !== 'undefined' ? KB_COA_PETTY : []).forEach(d => {
+    idx.push({
+      type: 'coa_petty',
+      text: [d.kategori, d.listing, d.contoh, d.account].join(' '),
+      main: d.listing,
+      data: d
+    });
+  });
+
+  (typeof GLOSS !== 'undefined' ? GLOSS : []).forEach(d => {
+    idx.push({
+      type: 'glosarium',
+      text: [d.q, (d.a || '').replace(/<[^>]+>/g, ' ')].join(' '),
+      main: d.q,
+      data: d
+    });
+  });
+
+  return idx;
+}
+let CB_INDEX = null;
+
+/* ── 4. SCORING ───────────────────────────── */
+// Kata umum yang sering "kebetulan" cocok tapi tidak khas (bobot dikecilkan)
+const CB_WEAK_WORDS = new Set(['data','umum','biaya','pembayaran','pengiriman','proses','laporan','jasa','barang',
+  'pajak','pph','dipotong','potong','dipungut','tarif','kena','dikenakan','bayar','penghasilan','objek','pemotongan','pungutan',
+  'sewa','gaji']);
+
+/** Skor kecocokan qTokens terhadap SATU string teks bebas (dipakai untuk field manapun). */
+function cbScoreText(qTokens, qNormFull, text) {
+  const eTokens = cbTokens(text);
+  const eNormFull = cbNorm(text);
+  let score = 0;
+  let matchedTokenCount = 0;
+  let strongMatchCount = 0; // hitungan kata KHAS (bukan kata umum seperti "pajak"/"dipotong")
+
+  qTokens.forEach(qt => {
+    const isDigitShort = /^[0-9]+$/.test(qt) && qt.length <= 2;
+    const isWeak = CB_WEAK_WORDS.has(qt);
+    const w = isDigitShort ? 0.5 : (isWeak ? 0.8 : 3);
+    if (eTokens.includes(qt)) {
+      score += w;
+      matchedTokenCount++;
+      if (!isWeak && !isDigitShort) strongMatchCount++;
+    } else if (!isDigitShort && qt.length >= 4 && eNormFull.includes(qt)) {
+      score += w / 2;
+      matchedTokenCount++;
+      if (!isWeak) strongMatchCount++;
+    }
+  });
+
+  const qWords = qNormFull.split(' ').filter(Boolean);
+  let phraseHit = false;
+  for (let n = 3; n >= 2; n--) {
+    for (let i = 0; i + n <= qWords.length; i++) {
+      const phraseWords = qWords.slice(i, i + n);
+      const hasContent = phraseWords.some(w => !CB_STOPWORDS.has(w) && !CB_WEAK_WORDS.has(w) && w.length >= 3);
+      if (!hasContent) continue; // lewati frasa yang isinya cuma kata sambung/kata umum ("tidak ada", "pajak pph", dst)
+      const phrase = phraseWords.join(' ');
+      if (phrase.length >= 6 && eNormFull.includes(phrase)) {
+        score += 4;
+        phraseHit = true;
+      }
+    }
+  }
+
+  // Penalti HANYA kalau tidak ada satupun kata KHAS yang cocok (semua kecocokan cuma kata umum
+  // seperti "pajak"/"dipotong"/"kena" yang muncul di hampir semua entri) — bukan sekadar "kurang dari 2 kata".
+  if (strongMatchCount === 0 && !phraseHit && eTokens.length >= 2) score *= 0.25;
+  return score;
+}
+
+function cbScore(qTokens, qNormFull, entry) {
+  let score = cbScoreText(qTokens, qNormFull, entry.text);
+  const wantsCOA = /\bcoa\b|akun|kode akun/.test(qNormFull);
+  const wantsTarif = /tarif|pajak|pph|potong|pemotongan|dipotong/.test(qNormFull);
+  if (wantsCOA && (entry.type === 'coa_rutin' || entry.type === 'coa_petty')) score += 2;
+  if (wantsTarif && (entry.type === 'pajak' || entry.type === 'coa_rutin' || entry.type === 'coa_petty')) score += 1.5;
+  return score;
+}
+
+function cbSearch(question) {
+  if (!CB_INDEX) CB_INDEX = cbBuildIndex();
+  const qTokens = cbTokens(question);
+  const qNormFull = cbNorm(question);
+  if (qTokens.length === 0) return [];
+
+  const scored = CB_INDEX.map(entry => ({ entry, score: cbScore(qTokens, qNormFull, entry) }))
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, 5);
+}
+
+/** Cari transaksi SPESIFIK untuk keperluan KALKULASI — sengaja hanya mencocokkan
+ *  ke nama transaksi (bukan vendor/catatan/glosarium), supaya kata seperti
+ *  "orang pribadi" atau "gross up" di pertanyaan tidak salah nyasar ke entri
+ *  lain yang kebetulan menyebut kata itu di kolom vendor/catatan. */
+function cbFindCalcEntry(question) {
+  if (!CB_INDEX) CB_INDEX = cbBuildIndex();
+  const qTokens = cbTokens(question);
+  const qNormFull = cbNorm(question);
+  if (qTokens.length === 0) return null;
+
+  const candidates = CB_INDEX.filter(e => e.type === 'pajak' || e.type === 'nopajak' || e.type === 'coa_rutin' || e.type === 'coa_petty');
+  const scored = candidates
+    .map(entry => ({ entry, score: cbScoreText(qTokens, qNormFull, entry.main || '') }))
+    .filter(x => x.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  if (scored.length === 0 || scored[0].score < 3) return null;
+  return scored[0];
+}
+
+/* ── 5. RENDER JAWABAN PER TIPE ─────────────── */
+function cbEscapeHtml(s) {
+  return (s || '').toString().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function cbRenderEntry(item) {
+  const d = item.data;
+  if (item.type === 'pajak') {
+    let html = `<div class="cb-card"><div class="cb-card-title">🧾 ${cbEscapeHtml(d.transaksi)}</div>`;
+    const category = cbClassifyTransaksi(d.transaksi, d.jenis_pajak);
+    if (category === 'jasa' || category === 'reward') {
+      const opKey = category === 'jasa' ? 'jasa-op' : 'reward-op';
+      const badanKey = category === 'jasa' ? 'jasa-badan' : 'reward-badan';
+      html += `<div class="cb-note">Kategori <b>${category === 'jasa' ? 'Jasa' : 'Reward/Hadiah'}</b> — tarif tergantung status vendor:</div>`;
+      html += `<div class="cb-row"><span>Vendor Orang Pribadi</span><b>${cbEscapeHtml(POT_TYPES[opKey].label)}</b></div>`;
+      html += `<div class="cb-row"><span>Vendor Badan Usaha</span><b>${cbEscapeHtml(POT_TYPES[badanKey].label)}</b></div>`;
+    } else if (category === 'sewa-tanah' || category === 'sewa-lain') {
+      html += `<div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(POT_TYPES[category].label)}</b></div>`;
+      html += `<div class="cb-note">Tarif ini berlaku sama untuk vendor Orang Pribadi maupun Badan Usaha.</div>`;
+    } else {
+      // tidak terklasifikasi — tampilkan data mentah dari Excel apa adanya
+      if (d.jenis_pajak) html += `<div class="cb-row"><span>Jenis Pajak</span><b>PPh ${cbEscapeHtml(d.jenis_pajak)}</b></div>`;
+      if (d.tarif) html += `<div class="cb-row"><span>Tarif</span><b>${cbEscapeHtml(d.tarif)}</b></div>`;
+    }
+    if (d.catatan) html += `<div class="cb-note">Catatan: ${cbEscapeHtml(d.catatan)}</div>`;
+    if (d.catatan2) html += `<div class="cb-note">${cbEscapeHtml(d.catatan2)}</div>`;
+    html += `</div>`;
+    return html;
+  }
+  if (item.type === 'nopajak') {
+    let html = `<div class="cb-card"><div class="cb-card-title">✅ ${cbEscapeHtml(d.transaksi)}</div>`;
+    html += `<div class="cb-note">Transaksi ini <b>tidak ada unsur PPh</b> — cukup verifikasi kelengkapan berkas &amp; tanda tangan.</div>`;
+    if (d.ket) html += `<div class="cb-note">Ket: ${cbEscapeHtml(d.ket)}</div>`;
+    html += `</div>`;
+    return html;
+  }
+  if (item.type === 'program') {
+    let html = `<div class="cb-card"><div class="cb-card-title">📋 ${cbEscapeHtml(d.detail || d.sub_program || d.program)}</div>`;
+    html += `<div class="cb-row"><span>Program</span><b>${cbEscapeHtml(d.program)}${d.sub_program ? ' — ' + cbEscapeHtml(d.sub_program) : ''}</b></div>`;
+    if (d.penjelasan) html += `<div class="cb-note">${cbEscapeHtml(d.penjelasan)}</div>`;
+    if (d.tarif_pph) html += `<div class="cb-row"><span>Tarif PPh</span><b>${cbEscapeHtml(d.tarif_pph)}</b></div>`;
+    if (d.faktur_pajak) html += `<div class="cb-row"><span>Faktur Pajak</span><b>${cbEscapeHtml(d.faktur_pajak)}</b></div>`;
+    if (d.redaksional) html += `<div class="cb-note">Redaksional kwitansi: "${cbEscapeHtml(d.redaksional)}"</div>`;
+    html += `</div>`;
+    return html;
+  }
+  if (item.type === 'coa_rutin' || item.type === 'coa_petty') {
+    let html = `<div class="cb-card"><div class="cb-card-title">🏷️ ${cbEscapeHtml(d.listing)}</div>`;
+    html += `<div class="cb-row"><span>Kategori</span><b>${cbEscapeHtml(d.kategori)}</b></div>`;
+    if (d.contoh) html += `<div class="cb-note">Contoh: ${cbEscapeHtml(d.contoh)}</div>`;
+    html += `<div class="cb-row"><span>Kode Akun (COA)</span><b class="cb-coa">${cbEscapeHtml(d.account)}</b></div>`;
+    html += cbRenderCOATaxInfo(d, false);
+    html += `</div>`;
+    return html;
+  }
+  if (item.type === 'glosarium') {
+    let html = `<div class="cb-card"><div class="cb-card-title">📖 ${cbEscapeHtml(d.q)}</div>`;
+    html += `<div class="cb-note">${d.a}</div></div>`;
+    return html;
+  }
+  return '';
+}
+
+/** Render info pajak untuk 1 entri COA berdasarkan field `klasifikasi` hasil analisis
+ *  (lihat file Klasifikasi_Pajak_COA_2022.xlsx). `compact` = true dipakai di dalam kartu hitung. */
+function cbRenderCOATaxInfo(d, compact) {
+  const klas = d.klasifikasi || '';
+  let html = '';
+  if (klas.startsWith('Jasa')) {
+    html += `<div class="cb-note">✅ <b>Ya, kena PPh.</b> Kategori <b>Jasa</b> — tarif tergantung status vendor:</div>`;
+    html += `<div class="cb-row"><span>Vendor Orang Pribadi</span><b>${cbEscapeHtml(POT_TYPES['jasa-op'].label)}</b></div>`;
+    html += `<div class="cb-row"><span>Vendor Badan Usaha</span><b>${cbEscapeHtml(POT_TYPES['jasa-badan'].label)}</b></div>`;
+  } else if (klas.startsWith('Sewa Tanah/Bangunan')) {
+    html += `<div class="cb-note">✅ <b>Ya, kena PPh.</b></div>`;
+    html += `<div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(POT_TYPES['sewa-tanah'].label)}</b></div>`;
+    html += `<div class="cb-note">Berlaku sama untuk vendor Orang Pribadi maupun Badan Usaha.</div>`;
+  } else if (klas.startsWith('Sewa Selain Tanah/Bangunan')) {
+    html += `<div class="cb-note">✅ <b>Ya, kena PPh.</b></div>`;
+    html += `<div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(POT_TYPES['sewa-lain'].label)}</b></div>`;
+    html += `<div class="cb-note">Berlaku sama untuk vendor Orang Pribadi maupun Badan Usaha.</div>`;
+  } else if (klas.startsWith('Gaji/Insentif Karyawan — KONDISIONAL')) {
+    html += `<div class="cb-note">🔀 <b>Tergantung</b> — tergantung cara pembayarannya:</div>`;
+    html += `<div class="cb-row"><span>Pembayaran gabungan/batch (Supplier: Umum)</span><b>Bukan objek — dipotong via payroll bulanan</b></div>`;
+    html += `<div class="cb-row"><span>Pembayaran untuk 1 orang saja</span><b>Langsung dipotong PPh 21 saat itu</b></div>`;
+  } else if (klas.startsWith('Gaji/Insentif')) {
+    html += `<div class="cb-note">❌ <b>Bukan objek pemotongan vendor</b> — ini komponen gaji/insentif karyawan TETAP TDM sendiri, dipotong lewat payroll PPh 21 bulanan (TER), bukan skema Gross-Up/Pemotongan di menu ini.</div>`;
+  } else if (klas.startsWith('Bukan Objek')) {
+    html += `<div class="cb-note">❌ <b>Tidak kena pemotongan PPh.</b> Ini pembelian barang/reimburse/tagihan resmi yang dikecualikan. Tidak perlu dihitung gross-up atau pemotongan.</div>`;
+  } else if (klas.startsWith('Perlu Dicek')) {
+    html += `<div class="cb-note">⚠️ <b>Belum pasti — perlu dicek manual.</b> Redaksionalnya kurang jelas atau bisa jadi campuran jasa+barang dalam satu tagihan. Cek nota/kwitansi asli sebelum menentukan pemotongan.</div>`;
+  }
+  if (d.alasan && !compact) html += `<div class="cb-note">Alasan: ${cbEscapeHtml(d.alasan)}</div>`;
+  return html;
+}
+
+/** Ambil tarif untuk perhitungan dari 1 entri COA, berbasis field `klasifikasi`
+ *  yang SUDAH dianalisis sebelumnya (bukan re-klasifikasi keyword runtime seperti
+ *  Transaksi Rutin) — supaya konsisten dengan Klasifikasi_Pajak_COA_2022.xlsx. */
+function cbResolveCOATarif(d, qNormFull) {
+  const klas = d.klasifikasi || '';
+  const isBadan = /badan usaha|perusahaan|\bpt\b|\bcv\b|firma|\bud\b/.test(qNormFull);
+  const isOP = /orang pribadi|perorangan|individu|\bpribadi\b|freelance/.test(qNormFull);
+
+  if (klas.startsWith('Jasa')) {
+    const key = isBadan ? 'jasa-badan' : 'jasa-op';
+    const conf = POT_TYPES[key];
+    const note = (!isBadan && !isOP)
+      ? `Diasumsikan vendor <b>Orang Pribadi</b> (default) → <b>${conf.label}</b>. Kalau vendornya Badan Usaha, sebutkan "ke badan usaha" supaya tarifnya 2% (PPh 23).`
+      : `Berdasarkan status vendor yang disebutkan (${isBadan ? 'Badan Usaha' : 'Orang Pribadi'}) → <b>${conf.label}</b>.`;
+    return { ok: true, fraction: conf.tarif, jenisLabel: conf.label, note };
+  }
+  if (klas.startsWith('Sewa Tanah/Bangunan')) {
+    return { ok: true, fraction: POT_TYPES['sewa-tanah'].tarif, jenisLabel: POT_TYPES['sewa-tanah'].label, note: 'Tarif ini berlaku sama baik vendor Orang Pribadi maupun Badan Usaha.' };
+  }
+  if (klas.startsWith('Sewa Selain Tanah/Bangunan')) {
+    return { ok: true, fraction: POT_TYPES['sewa-lain'].tarif, jenisLabel: POT_TYPES['sewa-lain'].label, note: 'Tarif ini berlaku sama baik vendor Orang Pribadi maupun Badan Usaha.' };
+  }
+  if (klas.startsWith('Gaji/Insentif Karyawan — KONDISIONAL')) {
+    const isSatuOrang = /\b1\s*orang\b|\bsatu\s*orang\b|perorangan|\bindividu\b|hanya\s*(1|satu)\s*(karyawan|orang)|khusus\s*(1|satu)\s*orang/.test(qNormFull);
+    const isGabungan = /gabungan|borongan|banyak orang|semua karyawan|payroll|bulanan|rutin|batch|kolektif|supplier umum/.test(qNormFull);
+    if (isSatuOrang && !isGabungan) {
+      const conf = POT_TYPES['jasa-op'];
+      return { ok: true, fraction: conf.tarif, jenisLabel: conf.label,
+        note: 'Karena disebutkan untuk <b>1 orang saja</b> — dipotong PPh 21 langsung saat ini (diperlakukan seperti honor perorangan), bukan menunggu payroll bulanan.' };
+    }
+    return { ok: false, klas, kondisional: true,
+      note: isGabungan
+        ? 'Karena ini pembayaran <b>gabungan/batch</b> — tidak perlu dipotong/gross-up sekarang, akan dipotong otomatis lewat payroll PPh 21 bulanan (TER).'
+        : 'Defaultnya diasumsikan pembayaran <b>gabungan/batch</b> (Supplier: Umum) — tidak perlu dipotong/gross-up sekarang, akan dipotong otomatis lewat payroll PPh 21 bulanan (TER). Kalau yang dimaksud pembayaran untuk <b>1 orang saja</b>, sebutkan itu di pertanyaan supaya saya hitung PPh 21-nya langsung.' };
+  }
+  return { ok: false, klas };
+}
+
+/* ── 5b. MESIN HITUNG (GROSS-UP & PEMOTONGAN) ───────────
+   PRIORITAS: kalau pertanyaan cocok dengan transaksi spesifik di data
+   Transaksi Rutin, pakai tarif ASLI dari data itu (supaya tidak pernah
+   beda dengan kartu jawaban yang ditampilkan). Tabel generik (sewa/jasa/
+   reward × OP/Badan) HANYA dipakai sebagai cadangan kalau tidak ada
+   transaksi spesifik yang cocok. */
+
+function cbParseNominal(rawText) {
+  // PENTING: pakai teks mentah (huruf kecil saja), JANGAN cbNorm() —
+  // cbNorm membuang titik/koma sehingga "3.000.000" rusak jadi "3 000 000".
+  const t = (rawText || '').toString().toLowerCase();
+  let m = t.match(/(\d+(?:[.,]\d+)?)\s*(juta|jt)\b/);
+  if (m) return parseFloat(m[1].replace(',', '.')) * 1e6;
+  m = t.match(/(\d+(?:[.,]\d+)?)\s*(milyar|miliar)\b/);
+  if (m) return parseFloat(m[1].replace(',', '.')) * 1e9;
+  m = t.match(/(\d+(?:[.,]\d+)?)\s*(ribu|rb)\b/);
+  if (m) return parseFloat(m[1].replace(',', '.')) * 1e3;
+  m = t.match(/\b(\d{1,3}(?:[.,]\d{3})+)\b/); // format 5.000.000 / 5,000,000
+  if (m) return parseFloat(m[1].replace(/[.,]/g, ''));
+  m = t.match(/\b(\d{4,})\b/); // angka polos panjang, mis. 5000000
+  if (m) return parseFloat(m[1]);
+  return null;
+}
+
+/** Ubah teks tarif dari data Excel (format macam-macam) jadi pecahan desimal.
+ *  Contoh: "2,5% ," -> 0.025 | "0.02" -> 0.02 | "2" -> 0.02 | "2%,4%" -> 0.02 (+ catat ganda) */
+function cbParseTarif(tarifRaw) {
+  const raw = (tarifRaw || '').toString().trim();
+  if (!raw) return { fraction: null, multi: false, allValues: [] };
+
+  const percentMatches = [...raw.matchAll(/(\d+(?:[.,]\d+)?)\s*%/g)].map(m => parseFloat(m[1].replace(',', '.')) / 100);
+  if (percentMatches.length > 0) {
+    return { fraction: percentMatches[0], multi: percentMatches.length > 1, allValues: percentMatches };
+  }
+  const num = parseFloat(raw.replace(',', '.'));
+  if (isNaN(num)) return { fraction: null, multi: false, allValues: [] };
+  if (num <= 1) return { fraction: num, multi: false, allValues: [num] };       // sudah pecahan, mis. 0.02
+  if (num <= 100) return { fraction: num / 100, multi: false, allValues: [num / 100] }; // angka polos, mis. 2 -> 2%
+  return { fraction: null, multi: false, allValues: [] };
+}
+
+/** Klasifikasi NAMA transaksi (bukan vendor) ke kategori pajak umum: jasa / sewa-tanah /
+ *  sewa-lain / reward. Kategori ini dipakai untuk menentukan tarif via logika OP-vs-Badan
+ *  yang SAMA dengan menu Gross-Up & Pemotongan — bukan dari kolom Jenis Pajak/Tarif mentah
+ *  di Excel (karena angka itu ternyata cuma mencerminkan status vendor spesifik saat data
+ *  dicatat, bukan aturan pajak yang berlaku umum untuk semua vendor).
+ *  Transaksi yang tak terklasifikasi (konstruksi, PPh 22, dll) tetap pakai data Excel apa adanya. */
+function cbClassifyTransaksi(transaksiName, jenisPajak) {
+  const t = ' ' + cbNorm(transaksiName) + ' ';
+
+  if (/konstruksi|pembuatan|renovasi|\bbangun\b/.test(t)) return null; // tarif final konstruksi khusus, jangan disamakan
+
+  if (/\bsewa\b|nyewa|rental/.test(t)) {
+    if (/tanah|bangunan|gedung|ruko|kios|kantor|rumah|tempat|lokasi|ruangan|gudang|venue|aula|kost|parkir|lahan/.test(t)) {
+      return 'sewa-tanah';
+    }
+    return 'sewa-lain';
+  }
+  if (/reward|hadiah|bonus|giveaway|insentif|juara/.test(t)) return 'reward';
+
+  const jasaKeywords = /jasa|servis|service|konsultan|\bfee\b|cetak|percetakan|design|desain|perbaikan|maintenance|pelatihan|training|narasumber|\bmc\b|iklan|\bads\b|konten|content|pengiriman|ekspedisi|expedisi|angkut|bongkar|kirim|instalasi|pemasangan|kebersihan|cleaning|keamanan|security|catering|dekorasi|pengangkutan|pameran|exhibition|roadshow|promo|canvassing|gaji|honor|petugas|tenaga|\bob\b/;
+  if (jasaKeywords.test(t)) return 'jasa';
+
+  // fallback: item PPh 21/23 umum tanpa kata kunci spesifik biasanya tetap bersifat "jasa"
+  if (jenisPajak === '21' || jenisPajak === '23' || jenisPajak === '21.23') return 'jasa';
+
+  return null;
+}
+
+function cbJenisPajakLabel(jenisPajak, fraction) {
+  const pct = (fraction * 100).toString().replace('.', ',');
+  if (jenisPajak === '4(2)') return `PPh 4(2) = ${pct}% FINAL`;
+  return `PPh ${jenisPajak} = ${pct}%`;
+}
+
+/** Tentukan mode (gross-up vs pemotongan) dari kalimat, dengan fallback ke
+ *  flag "GROSSUP" di catatan data (mis. transaksi Keamanan). */
+function cbDetermineMode(qNormFull, entryData) {
+  if (/gross[\s-]?up|digrossup|di gross up/.test(qNormFull)) return 'grossup';
+  if (/\bpotong\b|dipotong|pemotongan/.test(qNormFull)) return 'potong';
+  if (entryData && /GROSSUP/i.test((entryData.catatan || '') + (entryData.catatan2 || ''))) return 'grossup';
+  return 'potong';
+}
+
+/** Ambil tarif yang bisa dipakai hitung untuk 1 entri Transaksi Pajak (KB).
+ *  PRIORITAS: kalau transaksi terklasifikasi (jasa/sewa-tanah/sewa-lain/reward),
+ *  pakai tarif dari POT_TYPES sesuai status vendor OP/Badan di pertanyaan — SAMA
+ *  seperti kalkulator. Kolom Jenis Pajak/Tarif mentah di Excel hanya dipakai sebagai
+ *  data pembanding (catatan), atau sebagai fallback kalau transaksinya tak terklasifikasi. */
+function cbResolveEntryTarif(d, qNormFull) {
+  const isBadan = /badan usaha|perusahaan|\bpt\b|\bcv\b|firma|\bud\b/.test(qNormFull);
+  const isOP = /orang pribadi|perorangan|individu|\bpribadi\b|freelance/.test(qNormFull);
+  const category = cbClassifyTransaksi(d.transaksi, d.jenis_pajak);
+
+  if (category) {
+    let key, assumedRecipient = false;
+    if (category === 'sewa-tanah' || category === 'sewa-lain') {
+      key = category; // tidak tergantung OP/Badan
+    } else if (category === 'reward') {
+      key = isBadan ? 'reward-badan' : 'reward-op';
+      assumedRecipient = !isBadan && !isOP;
+    } else { // jasa
+      key = isBadan ? 'jasa-badan' : 'jasa-op';
+      assumedRecipient = !isBadan && !isOP;
+    }
+    const conf = POT_TYPES[key];
+    let note = '';
+    if (category === 'jasa' || category === 'reward') {
+      note = assumedRecipient
+        ? `Diasumsikan vendor <b>Orang Pribadi</b> (default) → <b>${conf.label}</b>. Kalau vendornya Badan Usaha, sebutkan "ke badan usaha" supaya tarifnya ${category === 'reward' ? '15% (PPh 23)' : '2% (PPh 23)'}.`
+        : `Berdasarkan status vendor yang disebutkan (${isBadan ? 'Badan Usaha' : 'Orang Pribadi'}) → <b>${conf.label}</b>.`;
+    } else {
+      note = `Tarif ini berlaku sama baik vendor Orang Pribadi maupun Badan Usaha.`;
+    }
+    // bandingkan dengan data mentah Excel sebagai pengecekan tambahan (bukan sumber utama)
+    const rawParsed = cbParseTarif(d.tarif);
+    if (rawParsed.fraction !== null && Math.abs(rawParsed.fraction - conf.tarif) > 0.005) {
+      note += ` <br>⚠️ Catatan: data historis pernah mencatat tarif berbeda (${(rawParsed.fraction * 100).toString().replace('.', ',')}%) untuk transaksi ini — kalau ada kondisi khusus, konfirmasikan ke Tim Tax.`;
+    }
+    return { fraction: conf.tarif, jenisLabel: conf.label, note, category };
+  }
+
+  // tidak terklasifikasi (mis. konstruksi, PPh 22) — pakai data mentah dari Excel apa adanya
+  if ((d.jenis_pajak || '').includes('.')) {
+    if (isBadan) return { fraction: 0.02, jenisLabel: 'PPh 23 = 2%', note: 'Diasumsikan <b>PPh 23</b> (ke Badan Usaha) karena transaksi ini bisa PPh 21 atau 23 tergantung status vendor.' };
+    return { fraction: 0.025, jenisLabel: 'PPh 21 TER ≈ 2,5%', note: 'Diasumsikan <b>PPh 21</b> (ke Orang Pribadi) karena transaksi ini bisa PPh 21 atau 23 tergantung status vendor.' };
+  }
+  const parsed = cbParseTarif(d.tarif);
+  if (parsed.fraction === null) return null;
+  const jenisLabel = cbJenisPajakLabel(d.jenis_pajak, parsed.fraction);
+  let note = '';
+  if (parsed.multi) {
+    note = `Data mencatat lebih dari satu kemungkinan tarif (${parsed.allValues.map(v => (v * 100).toString().replace('.', ',') + '%').join(', ')}) — saya pakai ${(parsed.fraction * 100).toString().replace('.', ',')}%. Konfirmasi ke Tim Tax kalau kondisi transaksinya berbeda.`;
+  }
+  return { fraction: parsed.fraction, jenisLabel, note, isFinal: d.jenis_pajak === '4(2)' };
+}
+
+function cbCalcGrossUp(nominal, tarif) {
+  const dpp = nominal / (1 - tarif);
+  const pajak = dpp - nominal;
+  return { dpp, pajak, nettVendor: nominal };
+}
+function cbCalcPemotongan(nominal, tarif, isPKP) {
+  const dpp = isPKP ? nominal / 1.11 : nominal;
+  const ppn = isPKP ? nominal - dpp : 0;
+  const pph = dpp * tarif;
+  const nettVendor = nominal - pph;
+  return { dpp, ppn, pph, nettVendor };
+}
+
+/** Render kartu hitung. `source` = { label, jenisLabel, tarif, note, fromEntry } */
+function cbRenderCalcCard(qNormFull, nominal, source) {
+  const pct = (source.tarif * 100).toString().replace('.', ',');
+  const isGrossUp = cbDetermineMode(qNormFull, source.entryData) === 'grossup';
+  const isPKP = /\bpkp\b|kena ppn|termasuk ppn|plus ppn/.test(qNormFull);
+
+  let html = `<div class="cb-card">`;
+  html += `<div class="cb-card-title">🧮 Perhitungan ${isGrossUp ? 'Gross-Up' : 'Pemotongan'} — ${cbEscapeHtml(source.label)}</div>`;
+  html += `<div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(source.jenisLabel)}</b></div>`;
+
+  if (source.note) html += `<div class="cb-note">${source.note}</div>`;
+  if (source.assumedGeneric) {
+    html += `<div class="cb-note">⚠️ Transaksi ini tidak persis cocok dengan data Transaksi Rutin, jadi saya pakai <b>aturan umum PPh</b> berdasarkan kata kunci di pertanyaan Anda. Kalau salah, sebutkan lebih spesifik.</div>`;
+  }
+
+  if (isGrossUp) {
+    const r = cbCalcGrossUp(nominal, source.tarif);
+    html += `<div class="cb-row"><span>Vendor terima bersih (Nett)</span><b>${rp(r.nettVendor)}</b></div>`;
+    html += `<div class="cb-row"><span>${cbEscapeHtml(source.jenisLabel)} (ditanggung pembayar)</span><b>${rp(r.pajak)}</b></div>`;
+    html += `<div class="cb-row"><span>Dibayarkan ke vendor (DPP)</span><b>${rp(r.dpp)}</b></div>`;
+    html += `<div class="cb-note">Formula: DPP = Nett ÷ (1 − ${pct}%) = ${rp(nominal)} ÷ ${(1 - source.tarif).toFixed(4)} = <b>${rp(r.dpp)}</b></div>`;
+  } else {
+    const r = cbCalcPemotongan(nominal, source.tarif, isPKP);
+    html += `<div class="cb-row"><span>Nilai diinput (Total Tagihan)</span><b>${rp(nominal)}</b></div>`;
+    if (isPKP) {
+      html += `<div class="cb-row"><span>DPP (Tagihan ÷ 1,11)</span><b>${rp(r.dpp)}</b></div>`;
+      html += `<div class="cb-row"><span>PPN 11%</span><b>${rp(r.ppn)}</b></div>`;
+    }
+    html += `<div class="cb-row"><span>Dipotong ${cbEscapeHtml(source.jenisLabel)}</span><b>− ${rp(r.pph)}</b></div>`;
+    html += `<div class="cb-row"><span>⭐ Diterima vendor (Nett)</span><b>${rp(r.nettVendor)}</b></div>`;
+    html += `<div class="cb-note">Asumsi vendor <b>${isPKP ? 'PKP (nilai input sudah termasuk PPN)' : 'Non-PKP (tidak ada PPN)'}</b>. Kalau beda, tambahkan kata "PKP" / "kena PPN".</div>`;
+    html += `<div class="cb-note">Kalau maksud Anda <b>${rp(nominal)}</b> adalah nilai bersih yang harus diterima vendor (bukan tagihan kotor), tambahkan kata "gross up" di pertanyaan.</div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+// keyword map -> key di POT_TYPES — CADANGAN, dipakai HANYA kalau tidak ada
+// transaksi spesifik di data Transaksi Rutin yang cocok dengan pertanyaan.
+function cbDetectGenericCalcType(qNormFull) {
+  const hasAny = (arr) => arr.some(w => qNormFull.includes(w));
+  const isOP = hasAny(['orang pribadi', 'perorangan', 'individu', 'pribadi', 'freelance', 'perseorangan']);
+  const isBadan = hasAny(['badan usaha', 'perusahaan', ' pt ', ' cv ', 'pt.', 'cv.', 'firma', ' ud ']);
+
+  if (hasAny(['sewa', 'nyewa', 'rental'])) {
+    if (hasAny(['tanah', 'bangunan', 'gedung', 'ruko', 'kios', 'kantor', 'rumah', 'tempat', 'lokasi', 'ruangan', 'gudang', 'venue', 'aula', 'kost'])) {
+      return { key: 'sewa-tanah', assumed: false };
+    }
+    if (hasAny(['mobil', 'motor', 'kendaraan', 'alat', 'mesin', 'genset', 'sound', 'tenda', 'kursi', 'forklift', 'excavator', 'crane', 'komputer', 'laptop', 'ac ', 'proyektor'])) {
+      return { key: 'sewa-lain', assumed: false };
+    }
+    return { key: 'sewa-lain', assumed: true };
+  }
+  if (hasAny(['jasa', 'servis', 'layanan', 'konsultan', 'fee'])) {
+    if (isBadan) return { key: 'jasa-badan', assumed: false };
+    return { key: 'jasa-op', assumed: !isOP };
+  }
+  if (hasAny(['reward', 'hadiah', 'bonus', 'giveaway', 'insentif'])) {
+    if (isBadan) return { key: 'reward-badan', assumed: false };
+    return { key: 'reward-op', assumed: !isOP };
+  }
+  return null;
+}
+
+/* ── 6. CHAT UI ──────────────────────────── */
+let cbLastQuestion = '';
+
+/* ── 5c. MEMORI PERCAKAPAN (FOLLOW-UP) ─────────────────
+   Supaya bot bisa jawab pertanyaan lanjutan singkat seperti "berapa tarifnya?"
+   atau "kalau vendornya PT ABC?" tanpa harus mengulang nama transaksinya. */
+let cbContext = { entry: null };
+
+function cbContextLabel(entry) {
+  if (!entry) return '';
+  if (entry.type === 'pajak' || entry.type === 'nopajak') return entry.data.transaksi;
+  if (entry.type === 'coa_rutin' || entry.type === 'coa_petty') return entry.data.listing;
+  return entry.main || '';
+}
+
+/** Kategori pajak dari 1 entri konteks: 'jasa' | 'reward' | 'sewa-tanah' | 'sewa-lain' |
+ *  'nopajak' | 'bukan-objek' | 'gaji-internal' | 'kondisional' | 'perlu-dicek' | null */
+function cbGetContextCategory(entry) {
+  if (!entry) return null;
+  if (entry.type === 'nopajak') return 'nopajak';
+  if (entry.type === 'pajak') return cbClassifyTransaksi(entry.data.transaksi, entry.data.jenis_pajak);
+  if (entry.type === 'coa_rutin' || entry.type === 'coa_petty') {
+    const klas = entry.data.klasifikasi || '';
+    if (klas.startsWith('Jasa')) return 'jasa';
+    if (klas.startsWith('Sewa Tanah/Bangunan')) return 'sewa-tanah';
+    if (klas.startsWith('Sewa Selain Tanah/Bangunan')) return 'sewa-lain';
+    if (klas.startsWith('Gaji/Insentif Karyawan — KONDISIONAL')) return 'kondisional';
+    if (klas.startsWith('Gaji/Insentif')) return 'gaji-internal';
+    if (klas.startsWith('Bukan Objek')) return 'bukan-objek';
+    if (klas.startsWith('Perlu Dicek')) return 'perlu-dicek';
+  }
+  return null;
+}
+
+function cbRenderVendorBreakdown(entry, category) {
+  const label = cbContextLabel(entry);
+  let html = `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>`;
+  if (category === 'jasa' || category === 'reward') {
+    const opKey = category === 'jasa' ? 'jasa-op' : 'reward-op';
+    const badanKey = category === 'jasa' ? 'jasa-badan' : 'reward-badan';
+    html += `<div class="cb-note">Tarifnya tergantung status vendor:</div>`;
+    html += `<div class="cb-row"><span>Vendor Orang Pribadi</span><b>${cbEscapeHtml(POT_TYPES[opKey].label)}</b></div>`;
+    html += `<div class="cb-row"><span>Vendor Badan Usaha</span><b>${cbEscapeHtml(POT_TYPES[badanKey].label)}</b></div>`;
+  } else {
+    const conf = POT_TYPES[category];
+    html += `<div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(conf.label)}</b></div>`;
+    html += `<div class="cb-note">Tarif ini sama untuk vendor Orang Pribadi maupun Badan Usaha.</div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function cbExplainVendorOP() {
+  return `<div class="cb-card"><div class="cb-card-title">📖 Vendor Orang Pribadi</div>
+    <div class="cb-note">Vendor perorangan/individu yang menerima penghasilan atas jasa, honor, sewa, atau hadiah — <b>BUKAN</b> berbentuk perusahaan/badan hukum.</div>
+    <div class="cb-note">Contoh: tukang, MC, konsultan lepas/freelancer, karyawan magang, fotografer perorangan.</div>
+    <div class="cb-row"><span>Umumnya dikenakan</span><b>PPh 21</b></div>
+    </div>`;
+}
+function cbExplainVendorBadan() {
+  return `<div class="cb-card"><div class="cb-card-title">📖 Vendor Badan Usaha</div>
+    <div class="cb-note">Vendor berbentuk perusahaan/badan hukum resmi (punya NPWP badan) — bukan perorangan.</div>
+    <div class="cb-note">Contoh: PT, CV, Firma, Koperasi, Yayasan.</div>
+    <div class="cb-row"><span>Umumnya dikenakan</span><b>PPh 23</b> (untuk jasa/sewa selain tanah-bangunan)</div>
+    </div>`;
+}
+
+/** Coba jawab sebagai LANJUTAN dari topik yang baru dibahas (cbContext.entry).
+ *  Return null kalau pertanyaan ini bukan follow-up yang dikenali → cbAsk lanjut
+ *  ke pencarian normal seperti biasa. */
+function cbTryContextFollowUp(q, qNormFull) {
+  if (!cbContext.entry) return null;
+  const qTokens = cbTokens(q);
+  if (qTokens.length > 12) return null; // pertanyaan sangat panjang biasanya topik baru sepenuhnya
+
+  // Kalau pertanyaan ini SENDIRI sudah lengkap sebagai topik baru (ada kata kunci
+  // transaksi generik sendiri, mis. "sewa mobil", "jasa konsultan"), jangan dianggap
+  // follow-up — biarkan alur normal (termasuk fallback generik) yang menangani.
+  if (cbDetectGenericCalcType(qNormFull)) return null;
+
+  // Kalau pertanyaan ini sendiri sudah cukup kuat cocok ke transaksi/COA lain (mis.
+  // menyebut nama transaksi baru), anggap topik baru juga — jangan pakai context lama.
+  const freshMatch = cbFindCalcEntry(q);
+  if (freshMatch && freshMatch.score >= 3) return null;
+
+  const isBadan = /badan usaha|perusahaan|\bpt\b|\bcv\b|firma|\bud\b/.test(qNormFull);
+  const isOP = /orang pribadi|perorangan|individu|\bpribadi\b|freelance/.test(qNormFull);
+  const asksTarif = /tarif|berapa\s*persen|persentase|persenan|kena\s*berapa|potong\s*berapa/.test(qNormFull);
+  const mentionsSatuOrang = /\b1\s*orang\b|\bsatu\s*orang\b|hanya\s*(1|satu)\s*(karyawan|orang)|khusus\s*(1|satu)\s*orang/.test(qNormFull);
+  if (!isBadan && !isOP && !asksTarif && !mentionsSatuOrang) return null;
+
+  const entry = cbContext.entry;
+  const category = cbGetContextCategory(entry);
+  const label = cbContextLabel(entry);
+  if (!category) return null;
+
+  if (category === 'nopajak') {
+    return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+      <div class="cb-note">Transaksi ini <b>tidak ada unsur PPh</b>, jadi tidak ada tarif OP/Badan yang berlaku di sini.</div></div>`;
+  }
+  if (category === 'bukan-objek' || category === 'gaji-internal') {
+    return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+      <div class="cb-note">❌ Transaksi ini <b>bukan objek pemotongan PPh vendor</b>, jadi tidak ada tarif OP/Badan di sini.</div></div>`;
+  }
+  if (category === 'perlu-dicek') {
+    return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+      <div class="cb-note">⚠️ Masih berstatus <b>perlu dicek manual</b> — belum bisa dipastikan tarifnya tanpa lihat nota/kwitansi asli.</div>
+      <div class="cb-actions"><button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">📮 Tanya CS untuk kepastian</button></div></div>`;
+  }
+  if (category === 'kondisional') {
+    if (mentionsSatuOrang) {
+      const conf = POT_TYPES['jasa-op'];
+      const note = 'Karena disebutkan untuk <b>1 orang saja</b> — dipotong PPh 21 langsung saat ini (diperlakukan seperti honor perorangan), bukan menunggu payroll bulanan.';
+      const nominal = cbParseNominal(q);
+      if (nominal) {
+        let html = cbRenderCalcCard(qNormFull, nominal, { label, jenisLabel: conf.label, tarif: conf.tarif, note });
+        html += `<div class="cb-actions"><button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button></div>`;
+        return html;
+      }
+      return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+        <div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(conf.label)}</b></div>
+        <div class="cb-note">${note}</div></div>`;
+    }
+    return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+      <div class="cb-note">🔀 Tergantung cara pembayarannya — gabungan/batch (bukan objek, lewat payroll) atau untuk 1 orang saja (langsung PPh 21). Sebutkan salah satu supaya saya pastikan.</div></div>`;
+  }
+
+  // sisanya: jasa / reward / sewa-tanah / sewa-lain
+  if (asksTarif && !isBadan && !isOP) {
+    let html = cbRenderVendorBreakdown(entry, category);
+    html += `<div class="cb-actions"><button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button></div>`;
+    return html;
+  }
+
+  const nominal = cbParseNominal(q);
+  let jenisLabel, fraction, note;
+  if (category === 'sewa-tanah' || category === 'sewa-lain') {
+    const conf = POT_TYPES[category];
+    jenisLabel = conf.label; fraction = conf.tarif;
+    note = 'Tarif ini sama untuk vendor Orang Pribadi maupun Badan Usaha.';
+  } else {
+    const key = category === 'jasa' ? (isBadan ? 'jasa-badan' : 'jasa-op') : (isBadan ? 'reward-badan' : 'reward-op');
+    const conf = POT_TYPES[key];
+    jenisLabel = conf.label; fraction = conf.tarif;
+    note = `Berdasarkan status vendor yang disebutkan (${isBadan ? 'Badan Usaha' : 'Orang Pribadi'}) → <b>${conf.label}</b>.`;
+  }
+
+  if (nominal) {
+    let html = cbRenderCalcCard(qNormFull, nominal, { label, jenisLabel, tarif: fraction, note });
+    html += `<div class="cb-actions"><button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button></div>`;
+    return html;
+  }
+  return `<div class="cb-card"><div class="cb-card-title">💬 ${cbEscapeHtml(label)}</div>
+    <div class="cb-row"><span>Status vendor</span><b>${isBadan ? 'Badan Usaha' : 'Orang Pribadi'}</b></div>
+    <div class="cb-row"><span>Jenis Pajak</span><b>${cbEscapeHtml(jenisLabel)}</b></div></div>`;
+}
+
+function cbAddMsg(html, who) {
+  const list = document.getElementById('cb-messages');
+  const wrap = document.createElement('div');
+  wrap.className = 'cb-msg cb-msg-' + who;
+  wrap.innerHTML = html;
+  list.appendChild(wrap);
+  list.scrollTop = list.scrollHeight;
+}
+
+function cbAddUserMsg(text) {
+  cbAddMsg(`<div class="cb-bubble cb-bubble-user">${cbEscapeHtml(text)}</div>`, 'user');
+}
+
+function cbAddBotHtml(innerHtml) {
+  cbAddMsg(`<div class="cb-avatar">🤖</div><div class="cb-bubble cb-bubble-bot">${innerHtml}</div>`, 'bot');
+}
+
+function cbNoMatchPrompt() {
+  return `Maaf, saya belum menemukan jawaban pasti untuk pertanyaan itu di data GASPOL.<br><br>
+    Ingin saya teruskan pertanyaan ini ke <b>Tim Tax TDM</b>? Tim akan menghubungi Anda lewat WhatsApp
+    dalam <b>1×24 jam</b>.
+    <div class="cb-actions">
+      <button class="cb-btn cb-btn-primary" onclick="cbOpenEscalation()">📮 Ya, teruskan ke CS</button>
+      <button class="cb-btn cb-btn-ghost" onclick="cbAddBotHtml('Oke, silakan ketik pertanyaan lain 🙂')">Coba lagi</button>
+    </div>`;
+}
+
+function cbAsk(text) {
+  const q = (text !== undefined ? text : document.getElementById('cb-input').value).trim();
+  if (!q) return;
+  cbAddUserMsg(q);
+  cbLastQuestion = q;
+  document.getElementById('cb-input').value = '';
+
+  const qNormFull = cbNorm(q);
+  const nominal = cbParseNominal(q); // pakai teks asli supaya format "3.000.000" terbaca
+
+  // ── 0) Pertanyaan definisi umum (tidak tergantung konteks obrolan) ──
+  if (/apa\s*(itu)?\s*vendor\s*orang\s*pribadi|beda\s*orang\s*pribadi\s*(dan|sama)\s*badan/.test(qNormFull)) {
+    cbAddBotHtml(cbExplainVendorOP());
+    return;
+  }
+  if (/apa\s*(itu)?\s*vendor\s*badan\s*usaha|apa\s*itu\s*badan\s*usaha/.test(qNormFull)) {
+    cbAddBotHtml(cbExplainVendorBadan());
+    return;
+  }
+
+  // ── 1) Coba jawab sebagai LANJUTAN dari topik sebelumnya (mis. "berapa tarifnya?",
+  //       "kalau vendornya PT ABC?") sebelum melakukan pencarian topik baru dari nol ──
+  const followUp = cbTryContextFollowUp(q, qNormFull);
+  if (followUp) {
+    cbAddBotHtml(followUp);
+    return;
+  }
+
+  // ── Kalau ada nominal, coba HITUNG. Prioritas #1: transaksi spesifik di data ──
+  if (nominal) {
+    const calcMatch = cbFindCalcEntry(q);
+    if (calcMatch && calcMatch.entry.type === 'pajak') {
+      cbContext.entry = calcMatch.entry;
+      const resolved = cbResolveEntryTarif(calcMatch.entry.data, qNormFull);
+      if (resolved) {
+        let html = cbRenderCalcCard(qNormFull, nominal, {
+          label: calcMatch.entry.data.transaksi,
+          jenisLabel: resolved.jenisLabel,
+          tarif: resolved.fraction,
+          note: resolved.note,
+          entryData: calcMatch.entry.data
+        });
+        html += `<div class="cb-actions">
+            <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button>
+          </div>`;
+        cbAddBotHtml(html);
+        return;
+      }
+      // tarif tidak bisa diparse dari data (mis. "Lihat Jasa nya") — jangan menebak,
+      // tampilkan kartu transaksi apa adanya dan arahkan ke CS.
+      let html = `Transaksi ini ada di data, tapi tarifnya perlu dicek manual (tidak tercantum tarif pasti):<br>`
+        + cbRenderEntry(calcMatch.entry);
+      html += `<div class="cb-actions">
+          <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">📮 Tanya CS untuk kepastian tarif</button>
+        </div>`;
+      cbAddBotHtml(html);
+      return;
+    }
+    if (calcMatch && calcMatch.entry.type === 'nopajak') {
+      cbContext.entry = calcMatch.entry;
+      let html = cbRenderEntry(calcMatch.entry);
+      html += `<div class="cb-note" style="margin-top:8px;">Karena transaksi ini <b>tidak ada unsur PPh</b>, tidak perlu dihitung gross-up maupun pemotongan.</div>`;
+      cbAddBotHtml(html);
+      return;
+    }
+    if (calcMatch && (calcMatch.entry.type === 'coa_rutin' || calcMatch.entry.type === 'coa_petty')) {
+      cbContext.entry = calcMatch.entry;
+      const d = calcMatch.entry.data;
+      const resolved = cbResolveCOATarif(d, qNormFull);
+      if (resolved.ok) {
+        let html = cbRenderCalcCard(qNormFull, nominal, {
+          label: d.listing,
+          jenisLabel: resolved.jenisLabel,
+          tarif: resolved.fraction,
+          note: resolved.note,
+          entryData: d
+        });
+        html += `<div class="cb-actions">
+            <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button>
+          </div>`;
+        cbAddBotHtml(html);
+        return;
+      }
+      // Bukan Objek / Gaji Internal / Perlu Dicek / Kondisional — tidak dihitung, tampilkan kartu info + alasan
+      let html = cbRenderEntry(calcMatch.entry);
+      if (resolved.kondisional && resolved.note) {
+        html += `<div class="cb-note" style="margin-top:8px;">💡 ${resolved.note}</div>`;
+      }
+      if (resolved.klas.startsWith('Perlu Dicek') || resolved.kondisional) {
+        html += `<div class="cb-actions">
+            <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">📮 Tanya CS untuk kepastian</button>
+          </div>`;
+      }
+      cbAddBotHtml(html);
+      return;
+    }
+    // Cadangan: tidak ada transaksi spesifik yang cocok — pakai aturan umum PPh
+    const generic = cbDetectGenericCalcType(qNormFull);
+    if (generic) {
+      const conf = POT_TYPES[generic.key];
+      let html = cbRenderCalcCard(qNormFull, nominal, {
+        label: conf.label,
+        jenisLabel: conf.label,
+        tarif: conf.tarif,
+        assumedGeneric: true
+      });
+      html += `<div class="cb-actions">
+          <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button>
+        </div>`;
+      cbAddBotHtml(html);
+      return;
+    }
+    // ada nominal tapi jenis transaksinya tidak dikenali sama sekali — lanjut ke pencarian biasa di bawah
+  }
+
+  // ── Tidak ada permintaan hitung (atau jenis transaksi tak dikenali) → pencarian data biasa ──
+  const results = cbSearch(q);
+  const top = results.length ? results[0] : null;
+  if (!top) {
+    cbAddBotHtml(cbNoMatchPrompt());
+    return;
+  }
+  const strong = results.filter(r => r.score >= top.score * 0.7 && r.score >= 4);
+  if (top.score < 4) {
+    cbAddBotHtml(cbNoMatchPrompt());
+    return;
+  }
+
+  let html = '';
+  cbContext.entry = strong[0].entry; // simpan topik utama supaya bisa di-follow-up
+  if (strong.length === 1) {
+    html += `Ini yang saya temukan:<br>` + cbRenderEntry(strong[0].entry);
+  } else {
+    html += `Ada beberapa kemungkinan jawaban, silakan cek yang paling sesuai:<br>`;
+    strong.slice(0, 3).forEach(r => { html += cbRenderEntry(r.entry); });
+  }
+  html += `<div class="cb-actions">
+      <button class="cb-btn cb-btn-ghost" onclick="cbOpenEscalation()">🙋 Belum sesuai? Tanya CS</button>
+    </div>`;
+  cbAddBotHtml(html);
+}
+
+function cbAskChip(text) {
+  document.getElementById('cb-input').value = text;
+  cbAsk(text);
+}
+
+function cbHandleKey(ev) {
+  if (ev.key === 'Enter') { ev.preventDefault(); cbAsk(); }
+}
+
+/* ── 7. ESKALASI KE CS (Google Sheets via Apps Script) ─────── */
+function cbOpenEscalation() {
+  const html = `
+    <div class="cb-form">
+      <div class="cb-form-title">Teruskan ke Tim Tax TDM</div>
+      <label>Nama</label>
+      <input type="text" id="cb-f-nama" placeholder="Nama Anda">
+      <label>No. WhatsApp</label>
+      <input type="tel" id="cb-f-hp" placeholder="08xxxxxxxxxx">
+      <label>Pertanyaan</label>
+      <textarea id="cb-f-pertanyaan" rows="3">${cbEscapeHtml(cbLastQuestion)}</textarea>
+      <div class="cb-actions">
+        <button class="cb-btn cb-btn-primary" onclick="cbSubmitEscalation(this)">Kirim ke CS</button>
+        <button class="cb-btn cb-btn-ghost" onclick="cbAddBotHtml('Baik, dibatalkan.')">Batal</button>
+      </div>
+      <div class="cb-form-msg" id="cb-form-msg"></div>
+    </div>`;
+  cbAddBotHtml(html);
+}
+
+function cbValidPhone(v) {
+  const digits = v.replace(/[^0-9]/g, '');
+  return digits.length >= 9 && digits.length <= 15;
+}
+
+async function cbSubmitEscalation(btn) {
+  const nama = document.getElementById('cb-f-nama').value.trim();
+  const hp = document.getElementById('cb-f-hp').value.trim();
+  const pertanyaan = document.getElementById('cb-f-pertanyaan').value.trim();
+  const msgEl = document.getElementById('cb-form-msg');
+
+  if (!nama || !hp || !pertanyaan) {
+    msgEl.textContent = 'Mohon lengkapi Nama, No. WhatsApp, dan Pertanyaan.';
+    msgEl.className = 'cb-form-msg cb-form-err';
+    return;
+  }
+  if (!cbValidPhone(hp)) {
+    msgEl.textContent = 'Nomor WhatsApp tidak valid.';
+    msgEl.className = 'cb-form-msg cb-form-err';
+    return;
+  }
+  if (!CS_SCRIPT_URL) {
+    msgEl.textContent = 'Fitur ini belum dikonfigurasi (SCRIPT_URL kosong). Hubungi admin GASPOL.';
+    msgEl.className = 'cb-form-msg cb-form-err';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Mengirim...';
+
+  try {
+    await fetch(CS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ nama, hp, pertanyaan, sumber: 'GASPOL Chatbot' })
+    });
+    cbAddBotHtml(`✅ Terkirim! Terima kasih ${cbEscapeHtml(nama)}, tim Tax TDM akan menghubungi Anda
+      lewat WhatsApp <b>${cbEscapeHtml(hp)}</b> dalam 1×24 jam.`);
+  } catch (err) {
+    msgEl.textContent = 'Gagal mengirim. Periksa koneksi internet lalu coba lagi.';
+    msgEl.className = 'cb-form-msg cb-form-err';
+    btn.disabled = false;
+    btn.textContent = 'Kirim ke CS';
+  }
+}
+
+/* ── 8. INIT ─────────────────────────────── */
+function cbInit() {
+  if (document.getElementById('cb-messages').dataset.inited) return;
+  document.getElementById('cb-messages').dataset.inited = '1';
+  cbAddBotHtml(`Halo! Saya asisten pajak GASPOL 👋<br>
+    Tanyakan transaksi, tarif PPh, kode COA, atau minta saya <b>hitung langsung</b> — misalnya
+    <i>"cetak banner kena pajak apa"</i>, <i>"COA sewa tempat pameran"</i>, atau
+    <i>"sewa mobil vendor orang pribadi 5 juta gross up berapa?"</i>.
+    Jika saya belum tahu jawabannya, pertanyaan bisa diteruskan ke Tim Tax TDM.`);
+}
 
 
 // ══════════════════════════════════
