@@ -1196,7 +1196,7 @@ table.coa-table td { padding: 9px 12px; vertical-align: top; }
 .coa-akun { font-family: monospace; color: var(--brand); font-size: 12px; white-space: nowrap; }
 .coa-contoh { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
 .coa-badge { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
-.coa-alasan { display: none; margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: var(--gray-600); background: var(--gray-50); padding: 8px 10px; border-radius: 8px; border-left: 3px solid var(--gray-200); }
+.coa-alasan { display: none; margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: var(--gray-600); background: var(--gray-50); padding: 8px 10px; border-radius: 8px; border-left: 3px solid var(--gray-200); max-height: 160px; overflow-y: auto; }
 tr.coa-row.expanded .coa-alasan { display: block; }
 .coa-empty { text-align: center; color: var(--gray-400); padding: 30px !important; font-size: 12.5px; }
 .cb-wrap { display:flex; flex-direction:column; height:100%; max-width:760px; margin:0 auto; width:100%; padding:20px 24px 16px; box-sizing:border-box; }
@@ -1840,7 +1840,7 @@ tr.coa-row.expanded .coa-alasan { display: block; }
 <!-- ══ KAMUS COA ══ -->
 <div class="page" id="page-kamuscoa">
   <div class="coa-hero">
-    <h2>Kamus Kode Akun (COA) 2022</h2>
+    <h2>Kamus Kode Akun (COA)</h2>
     <p>230 akun TDM (Biaya Rutin + Petty Cash) — cari nama transaksi/kode akun, filter berdasarkan klasifikasi pajak, klik baris untuk lihat alasannya</p>
   </div>
   <div class="coa-search-bar">
@@ -2404,19 +2404,28 @@ function coaEscHtml(s) {
   return (s || '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+let COA_FILTER_CATS = null;
+function coaGetFilterCats() {
+  if (!COA_FILTER_CATS) {
+    COA_FILTER_CATS = [{ key: 'all', label: 'Semua' }].concat(
+      Object.keys(KLAS_META).map(k => ({ key: k, label: KLAS_META[k].short }))
+    );
+  }
+  return COA_FILTER_CATS;
+}
+
 function renderCoaFilters() {
   const el = document.getElementById('coa-filters');
   if (!el) return;
-  const cats = [{ key: 'all', label: 'Semua' }].concat(
-    Object.keys(KLAS_META).map(k => ({ key: k, label: KLAS_META[k].short }))
-  );
-  el.innerHTML = cats.map(c =>
-    `<button class="coa-chip ${coaActiveFilter === c.key ? 'active' : ''}" onclick="coaSetFilter(${JSON.stringify(c.key)})">${coaEscHtml(c.label)}</button>`
+  const cats = coaGetFilterCats();
+  el.innerHTML = cats.map((c, idx) =>
+    `<button class="coa-chip ${coaActiveFilter === c.key ? 'active' : ''}" onclick="coaSetFilterByIdx(${idx})">${coaEscHtml(c.label)}</button>`
   ).join('');
 }
 
-function coaSetFilter(key) {
-  coaActiveFilter = key;
+function coaSetFilterByIdx(idx) {
+  const cats = coaGetFilterCats();
+  coaActiveFilter = cats[idx].key;
   renderCoaFilters();
   renderKamusCoa();
 }
@@ -2427,7 +2436,9 @@ function coaOnSearch(val) {
 }
 
 function coaToggleRow(tr) {
-  tr.classList.toggle('expanded');
+  const wasExpanded = tr.classList.contains('expanded');
+  document.querySelectorAll('#coa-tbody tr.coa-row.expanded').forEach(r => r.classList.remove('expanded'));
+  if (!wasExpanded) tr.classList.add('expanded');
 }
 
 function renderKamusCoa() {
@@ -2468,10 +2479,16 @@ function renderKamusCoa() {
 }
 
 function coaInit() {
-  if (document.getElementById('coa-tbody').dataset.inited) return;
-  document.getElementById('coa-tbody').dataset.inited = '1';
-  renderCoaFilters();
-  renderKamusCoa();
+  const tbody = document.getElementById('coa-tbody');
+  if (!tbody || tbody.dataset.inited) return;
+  tbody.dataset.inited = '1';
+  try {
+    renderCoaFilters();
+    renderKamusCoa();
+  } catch (err) {
+    console.error('Kamus COA gagal render:', err);
+    tbody.innerHTML = '<tr><td colspan="4" class="coa-empty">Terjadi kesalahan memuat data. Coba refresh halaman.</td></tr>';
+  }
 }
 
 
